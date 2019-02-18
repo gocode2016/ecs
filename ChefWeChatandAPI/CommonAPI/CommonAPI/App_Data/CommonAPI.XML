@@ -1,0 +1,1300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonAPI</name>
+    </assembly>
+    <members>
+        <member name="M:CommonAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,CommonAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,CommonAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,CommonAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:CommonAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},CommonAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:CommonAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(CommonAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CommonAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,CommonAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:CommonAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:CommonAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CommonAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CommonAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:CommonAPI.Common.LogHelper.WriteLog(System.String,System.String)">
+            <summary>
+            写日志(用于跟踪)
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.S3Unit.UploadFile(System.String,System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="s3Folder"></param>
+            <param name="localFilePath"></param>
+        </member>
+        <member name="M:CommonAPI.Common.S3Unit.DeleteFile(System.String,System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="s3Folder"></param>
+            <param name="filename"></param>
+        </member>
+        <member name="M:CommonAPI.Common.SmallImage.SendSmallImage(System.String,System.String,System.Int32,System.Int32,System.Int64,System.String)">
+            <summary>
+            得到缩略图，指定像素
+            </summary>
+            <param name="fileName">源文件路径</param>
+            <param name="newFile">新文件路径</param>
+            <param name="maxHeight">缩略图高</param>
+            <param name="maxWidth">缩略图宽</param>
+            <param name="qualityNum">图片质量1-100；100为0压</param>
+            <param name="mode">缩放模式，CUT裁剪不失真，HW定宽高有可能变形，W定宽，H定高</param>
+        </member>
+        <member name="T:CommonAPI.Common.SqlHelper">
+            <summary>
+            SqlHelper数据层
+            </summary>
+        </member>
+        <member name="F:CommonAPI.Common.SqlHelper.connection">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.#ctor">
+            <summary>
+            初始化连接对象
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将SqlParameters插入至SqlParameter.
+            </summary>
+            <param name="command">需要添加SqlParameters的Command</param>
+            <param name="commandParameters">被添加到Command的SqlParameters数组</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            将DataRow列的值插入到SqlParameters数组中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="dataRow">DataTable数据行</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            将数组中的值复制到SqlParameters中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="parameterValues">对象数组</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            根据Connection, Transaction, CommandType and Parameters得到指定的Command
+            </summary>
+            <param name="command">指定的SqlParameter</param>
+            <param name="transaction">有效的SqlTransaction, 或 'null'</param>
+            <param name="commandType">CommandType类型(stored procedure, text, etc.)</param>
+            <param name="commandText">The Stored procedure Name or T-SQL command</param>
+            <param name="commandParameters">SqlParameters数组 或 'null'</param>
+            <param name="mustCloseConnection"><c>true</c></param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand. 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            使用提供的参数执行SqlCommand,带参数 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">SqlParamters数组</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不提供SqlParameter . 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders",transaction);
+            </remarks>        
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,提供SqlParameter
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24),trans);
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataTable dt = ExecuteDataTable(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataTable内存表</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction,CommonAPI.Common.SqlHelper.SqlConnectionOwnership)">
+            <summary>
+            调用ExecuteReader,通过提供CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParameters or 'null'</param>
+            <param name="transaction">一个有效的SqlTransaction, or 'null'</param>
+            <param name="connectionOwnership">标识连接对象是由caller提供还是由SqlHelper提供</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            调用ExecuteReader,不带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            调用ExecuteReader,带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,无参数,属于外部调用 
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,带参数,属于外部调用
+            </summary>
+            <remarks>
+              SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            执行SqlCommand
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行SqlCommand 
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">对象数组，将该值导入相应的参数中</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>    
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>   
+            <param name="commandParameters">参数数组</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射(私有方法)
+            </summary>
+            <remarks>
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.ExecutePageDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            查询出指定页数的数据，返回DataSet
+            </summary>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="pageSize">每页数量</param>
+            <param name="currentPageIndex">当前页</param>
+            <param name="commandParameters">参数SqlParameter</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.Dispose(System.Boolean)">
+            <summary>
+            如果连接未关闭，则关闭连接  
+            </summary>
+            /// <param name="disposing">判断参数</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlHelper.Dispose">
+            <summary>
+            重写Dispose  
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Common.SqlHelper.GetConnection">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Common.SqlHelper.SqlConnectionOwnership">
+            <summary>
+            枚举表示该连接不论是调用者还是SqlHelper,当执行ExecuteReader()时需要用CommandBehavior
+            </summary>
+        </member>
+        <member name="F:CommonAPI.Common.SqlHelper.SqlConnectionOwnership.Internal">
+            <summary>连接由SqlHelper管理和使用</summary>
+        </member>
+        <member name="F:CommonAPI.Common.SqlHelper.SqlConnectionOwnership.External">
+            <summary>连接由调用者管理和使用</summary>
+        </member>
+        <member name="T:CommonAPI.Common.SqlParamHelper">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.Append(CommonAPI.Common.SqlParamHelper)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <!-- 对于成员“M:CommonAPI.Common.SqlParamHelper.Select(System.Object[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:CommonAPI.Common.SqlParamHelper.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="P:CommonAPI.Common.SqlParamHelper.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Common.SqlParamHelper.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Common.SqlParamHelper.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Common.SqlParamHelper.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Common.SqlParamHelper.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.AddressController">
+            <summary>
+            地址管理API
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.AddressController.SaveAddress(System.Object)">
+            <summary>
+            添加地址
+            </summary>
+            <param name="requestData">地址信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.AddressController.GetMemberAddressList(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取订单列表
+            </summary>
+            <param name="memberId">会员id</param>
+            <param name="isDefault">是否默认地址</param>
+            <param name="AddressId">地址ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.AddressController.UpdateAddress(System.Object)">
+            <summary>
+            修改会员地址
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.DrawPrizeController.SaveDrawPrize(System.Object)">
+            <summary>
+            新增奖品
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.DrawPrizeController.UpdateDrawPrize(System.Object)">
+            <summary>
+            修改奖品
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.DrawPrizeController.GetPrizeList">
+            <summary>
+            查询奖品列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.DrawPrizeController.GetAllPrizeList">
+            <summary>
+            查询奖品列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.HomeTasteDrawController">
+            <summary>
+            欣春赢家味抽奖API
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTasteDrawController.AddPrizeHTD(System.Object)">
+            <summary>
+            增加未注册用户信息--欣春赢家味抽奖--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTasteDrawController.PrizeProbability(System.Object)">
+             <summary>
+            中奖--欣春赢家味抽奖--wx
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTasteDrawController.IsTodyPrize(System.Object)">
+            <summary>
+            当天是否抽奖--欣春赢家味抽奖--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTasteDrawController.GetWinning">
+            <summary>
+             中奖名单--欣春赢家味抽奖--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.HomeTastePacketController">
+            <summary>
+            201802月随机红包API
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTastePacketController.AddRedPacket(System.Object)">
+            <summary>
+            抽取随机红包
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTastePacketController.ListRedPacket">
+            <summary>
+            获取获奖列表，前500条
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTastePacketController.IsDrawRed(System.Object)">
+            <summary>
+            是否能抽积分
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTastePacketController.IsWXTranspond(System.Object)">
+            <summary>
+            春节积分红包是否转发朋友圈（仅限朋友圈）
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.HomeTastePacketController.IsCommTranspond(System.Object)">
+            <summary>
+            是否转发朋友圏（仅限朋友圈）
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.ImageController.ImgUpload(System.String)">
+            <summary>
+            图片上传API
+            </summary>
+            <param name="img_type">
+            图片类型：
+            img_type = "Member"   用户类
+            img_type = "Product"  商城类
+            img_type = "Cook"     菜品类
+            img_type = "Activity" 活动类
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.LuckDrawController.AddDrawLog(System.Object)">
+            <summary>
+            新增抽奖日志
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.LuckDrawController.CheckDraw(System.Object)">
+            <summary>
+            判断抽奖次数
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.LuckDrawController.ShareDraw(System.Object)">
+            <summary>
+            页面分享
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.LuckDrawController.GetDrawList">
+            <summary>
+            查询中奖列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.LuckDrawController.MemberDrawing(System.Int32)">
+            <summary>
+            米其林抽奖
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.AddMemberPrize(System.Object)">
+            <summary>
+            批量保存中奖人数
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.GetMemberByDrawPrizeId(System.Int32)">
+            <summary>
+            根据奖项获取中奖人员
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.CheckIsPrize(System.Int32)">
+            <summary>
+            查看是否中奖
+            </summary>
+            <param name="memberId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.PrizeByTelephone(System.String)">
+            <summary>
+            查看是否中奖
+            </summary>
+            <param name="memberId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.HavePrize(System.Int32)">
+            <summary>
+            领奖
+            </summary>
+            <param name="memberPrizeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.MemberPrizeController.GetMemberByCookeday">
+            <summary>
+            获取厨师节总人数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.RegionsController">
+            <summary>
+            省市区三级查询部分
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.RegionsController.GetAllProvince">
+            <summary>
+            获取所有省
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.RegionsController.GetCityList(System.Int32)">
+            <summary>
+            根据省ID获取市，如需要查询全部则不需要传参数
+            </summary>
+            <param name="provinceId">省ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.RegionsController.GetAreaList(System.Int32)">
+            <summary>
+            根据市ID获取区,如果需查询全部则不需要传参数
+            </summary>
+            <param name="cityId">市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.RegionsController.GetRegion">
+            <summary>
+            获取所有省市区及城市级别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.RegionsController.FindCity(System.Object)">
+            <summary>
+            查询省市区
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.SMSController">
+            <summary>
+            短信部分
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.SMSController.SendRegistSMS(System.Object)">
+            <summary>
+            用户注册发送短信验证码
+            </summary>
+            <param name="requestData">Telephone：手机号</param>
+            <returns>返回验证码</returns>
+        </member>
+        <member name="T:CommonAPI.Controllers.SubjectController">
+            <summary>
+            元宵节活动
+            </summary>
+        </member>
+        <member name="M:CommonAPI.Controllers.SubjectController.GetSubject">
+            <summary>
+            元宵节-获取题目
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CommonAPI.Controllers.SubjectController.SetSubLog(System.Object)">
+            <summary>
+            元宵节日志及验证
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CommonAPI.Models.Address">
+            <summary>
+            地址表
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.MemberId">
+            <summary>
+            会员ID
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.FullName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.Mobile">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.ProvinceId">
+            <summary>
+            省ID
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.ProvinceName">
+            <summary>
+            省名称
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.CityId">
+            <summary>
+            市ID
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.CityName">
+            <summary>
+            市名称
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.AreaId">
+            <summary>
+            区ID
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.AreaName">
+            <summary>
+            区名称
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.MemberAddress">
+            <summary>
+            具体地址
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.IsDefault">
+            <summary>
+            是否为默认地址
+            </summary>
+        </member>
+        <member name="P:CommonAPI.Models.Address.ZipCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.ECWXTranspondDetails">
+            <summary>
+            转发详情类
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.HomeTastePacket">
+            <summary>
+            201802月份随机红包类
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.LuckDrawLog">
+            <summary>
+            常规抽奖日志
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.PrizeInfo">
+            <summary>
+            欣春赢家味抽奖奖品情况
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.PrizeInfoWinner">
+            <summary>
+            欣春赢家味抽奖获奖情况
+            </summary>
+        </member>
+        <member name="T:CommonAPI.Models.PrizeOpenIdHomeTasteDraw">
+            <summary>
+            欣春赢家味抽奖从这里没有注册的会员是否去注册
+            </summary>
+        </member>
+    </members>
+</doc>

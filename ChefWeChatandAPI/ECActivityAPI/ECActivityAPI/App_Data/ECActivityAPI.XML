@@ -1,0 +1,2608 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ECActivityAPI</name>
+    </assembly>
+    <members>
+        <member name="M:ECActivityAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,ECActivityAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,ECActivityAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:ECActivityAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},ECActivityAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(ECActivityAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,ECActivityAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:ECActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ECActivityAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ECActivityAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.CacheExtend.CacheInsert(System.String,System.Object,System.DateTime)">
+            <summary>
+            插入缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration">过期时间</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.CacheExtend.CacheInsert(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            插入缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="slidingExpiration">相对过期时间间隔</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.CacheExtend.GetCache``1(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration"></param>
+        </member>
+        <member name="M:ECActivityAPI.Common.CacheExtend.HasCache(System.String)">
+            <summary>
+            缓存是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.CacheExtend.CacheRemove(System.String)">
+            <summary>
+            删除缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Common.DateTimeConvent">
+            <summary>
+            Json日期转换
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.DateTimeConvent.DateTimehh">
+            <summary>
+            yyyy-MM-dd hh:mm
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.DateTimeConvent.DateTimedd">
+            <summary>
+            yyyy-MM-dd
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Common.EnumType">
+            <summary>
+            枚举类别
+            </summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.ImgHandle.DNS">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.ImgHandle.appid">
+            <summary>
+            appid
+            </summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.ImgHandle.secret">
+            <summary>
+            secret
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.Base64StringToImage(System.String,System.String,System.String)">
+            <summary>
+            base64转为图片
+            </summary>
+            <param name="baseString">base64格式</param>
+            <param name="fileType">照片格式</param>
+            <param name="filePath">保存文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.GetHtmlImageUrlList(System.String)">
+            <summary>   
+            取得HTML中所有图片的 URL。   
+            </summary>   
+            <param name="sHtmlText">HTML代码</param>   
+            <returns>图片的URL列表</returns>   
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.SentTemplate(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            审核发送模板消息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.SentTemplate(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            审核发送模板消息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.SentTemplate(System.String,System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            审核发送模板消息
+            </summary>
+             <param name="openId">OpenId</param>
+            <param name="dishName">菜品名称</param>
+            <param name="context">审核意见</param>
+            <param name="matchName">活动名称</param>
+            <param name="isPass">是否合格</param>
+            <param name="url">链接</param>
+            <returns>OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.PostJson(System.String,System.String)">
+            <summary>
+            发送模板消息
+            </summary>
+            <param name="url"></param>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ImgHandle.GetAccessToken">
+            <summary>
+            获取AccessToken
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.ErrorManage.GetErrorInfo(System.Int32)">
+            <summary>
+            获取错误信息
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.JsonHelper.ObjectToJson(System.Object)">
+            <summary>
+            对象序列化成json
+            </summary>
+            <param name="toJsonValue">要转化成Json的对象</param>
+            <returns>返回序列化后的字符串</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.JsonHelper.JsonToObject``1(System.String)">
+            <summary>
+            json反序列化成对象
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.JsonHelper.JsonToList``1(System.String)">
+            <summary>
+            json反序列化成list
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="T:ECActivityAPI.Common.SqlHelper">
+            <summary>
+            SqlHelper数据层
+            </summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.SqlHelper.connection">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.#ctor">
+            <summary>
+            初始化连接对象
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将SqlParameters插入至SqlParameter.
+            </summary>
+            <param name="command">需要添加SqlParameters的Command</param>
+            <param name="commandParameters">被添加到Command的SqlParameters数组</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            将DataRow列的值插入到SqlParameters数组中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="dataRow">DataTable数据行</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            将数组中的值复制到SqlParameters中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="parameterValues">对象数组</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            根据Connection, Transaction, CommandType and Parameters得到指定的Command
+            </summary>
+            <param name="command">指定的SqlParameter</param>
+            <param name="transaction">有效的SqlTransaction, 或 'null'</param>
+            <param name="commandType">CommandType类型(stored procedure, text, etc.)</param>
+            <param name="commandText">The Stored procedure Name or T-SQL command</param>
+            <param name="commandParameters">SqlParameters数组 或 'null'</param>
+            <param name="mustCloseConnection"><c>true</c></param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand. 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            使用提供的参数执行SqlCommand,带参数 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">SqlParamters数组</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不提供SqlParameter . 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders",transaction);
+            </remarks>        
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,提供SqlParameter
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24),trans);
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataTable dt = ExecuteDataTable(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataTable内存表</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction,ECActivityAPI.Common.SqlHelper.SqlConnectionOwnership)">
+            <summary>
+            调用ExecuteReader,通过提供CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParameters or 'null'</param>
+            <param name="transaction">一个有效的SqlTransaction, or 'null'</param>
+            <param name="connectionOwnership">标识连接对象是由caller提供还是由SqlHelper提供</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            调用ExecuteReader,不带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            调用ExecuteReader,带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,无参数,属于外部调用 
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,带参数,属于外部调用
+            </summary>
+            <remarks>
+              SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            执行SqlCommand
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行SqlCommand 
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">对象数组，将该值导入相应的参数中</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>    
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>   
+            <param name="commandParameters">参数数组</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射(私有方法)
+            </summary>
+            <remarks>
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.ExecutePageDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            查询出指定页数的数据，返回DataSet
+            </summary>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="pageSize">每页数量</param>
+            <param name="currentPageIndex">当前页</param>
+            <param name="commandParameters">参数SqlParameter</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.Dispose(System.Boolean)">
+            <summary>
+            如果连接未关闭，则关闭连接  
+            </summary>
+            /// <param name="disposing">判断参数</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlHelper.Dispose">
+            <summary>
+            重写Dispose  
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Common.SqlHelper.GetConnection">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Common.SqlHelper.SqlConnectionOwnership">
+            <summary>
+            枚举表示该连接不论是调用者还是SqlHelper,当执行ExecuteReader()时需要用CommandBehavior
+            </summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.SqlHelper.SqlConnectionOwnership.Internal">
+            <summary>连接由SqlHelper管理和使用</summary>
+        </member>
+        <member name="F:ECActivityAPI.Common.SqlHelper.SqlConnectionOwnership.External">
+            <summary>连接由调用者管理和使用</summary>
+        </member>
+        <member name="T:ECActivityAPI.Common.SqlParamHelper">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.Append(ECActivityAPI.Common.SqlParamHelper)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <!-- 对于成员“M:ECActivityAPI.Common.SqlParamHelper.Select(System.Object[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="P:ECActivityAPI.Common.SqlParamHelper.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Common.SqlParamHelper.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="P:ECActivityAPI.Common.SqlParamHelper.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Common.SqlParamHelper.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Common.SqlParamHelper.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="P:ECActivityAPI.CreditContext.ProductKuInfo">
+            <summary>
+            产品库类
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.AddBanner(System.Object)">
+            <summary>
+            增加轮播图--轮播图列表--web
+            </summary>
+            <param name="requestData">增加轮播图 数组</param>
+            <returns>OK,成功，No，失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.UpdateSingle(System.Object)">
+            <summary>
+            修改单个信息--轮播图列表--web
+            </summary>
+            <param name="bannerDate">轮播图对象</param>
+            <returns>OK，修改成功，No，失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.UpdateIsDel(System.Object)">
+            <summary>
+             单个轮播图删除删除信息--轮播图列表--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetBannerList(System.Int32,System.Int32)">
+            <summary>
+            获取轮播图列表--轮播图列表--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.DelBannerMore(System.Object)">
+            <summary>
+             批量删除轮播信息--轮播图列表--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.getSingleBanner(System.Int32)">
+            <summary>
+            获取单个轮播信息--轮播图列表--web
+            </summary>
+            <param name="bannerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetBanner">
+            <summary>
+            读取轮播图，活动，赛区信息--EC活动首页--wx
+            </summary>
+            <param name="chefActivityId">活动ID</param>
+            <param name="matchRegionId">赛区ID</param>
+            <returns>非空返回轮播图JSon，空返回No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetNotice">
+            <summary>
+            读取公告信息--EC活动首页--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetTutorByChefActivityId">
+            <summary>
+            根据首页活动获取导师信息--EC活动首页--wx
+            </summary>
+            <returns>活动信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetDishChefHomePage(System.String)">
+            <summary>
+            参赛菜品，最新入选，人气枪手，星厨列表--EC活动首页--wx
+            </summary>
+            <param name="openId">OpenId</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.IsApply(System.Object)">
+            <summary>
+            判断是否可以报名--EC活动首页--wx
+            </summary>
+            <returns>-2 没有报名,-1没有任何菜品,0、待审核   1、审核通过   2、审核不通过、4、表示填写了一道菜品信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetMyTrack(System.Object)">
+            <summary>
+            目前有的我的足迹--我的足迹--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetShopingBanner">
+            <summary>
+            读取商城轮播图--商城--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BannerController.GetBanner(System.Object)">
+            <summary>
+             获取轮播基本信息--做成获取统一轮播图接口--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.BusinessContributionController">
+            <summary>
+            生意贡献度
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.BusinessContributionController.GetBCList(System.Object)">
+            <summary>
+            生意贡献度列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.ChefActivityController">
+            <summary>
+            厨师活动表
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.AddChefActivity(System.Object)">
+            <summary>
+            增加厨师活动表--活动列表配置信息--web
+            </summary>
+            <param name="requestData">厨师活动表格式</param>
+            <returns>OK,成功；No,失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.GetChefActivityAll">
+            <summary>
+            获取厨师活动--活动列表--web
+            </summary>
+            <returns>厨师活动基本信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.GetCAByCAId(System.Int32)">
+            <summary>
+            获取单个厨师活动--活动列表配置信息--web
+            </summary>
+            <returns>厨师活动基本信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.UpdateIsDel(System.Int32,System.String)">
+            <summary>
+            删除活动操作--活动列表配置信息--web
+            </summary>
+            <param name="ChefActivityId">活动Id</param>
+            <param name="UpdatePerson">修改人</param>
+            <returns>OK，成功，No，失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.UpdateIsEnable(System.Object)">
+            <summary>
+            修改活动,每次只启用一个活动，修改这个，停用另外的--活动列表配置信息--web
+            </summary>
+            <param name="requestDate">修改数据</param>
+            <returns>OK，成功，No ,失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefActivityController.GetCAMRByCA(System.Int32)">
+            <summary>
+            查询活动及本活动的赛区--活动列表配置信息--web
+            </summary>
+            <param name="ca">活动ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.ChefController">
+            <summary>
+            厨师
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.GetMatchRegion">
+            <summary>
+            读取活动设置为开放的赛区--活动报名页--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.AddChef(ECActivityAPI.Models.Chef)">
+            <summary>
+            新增（修改）厨师基本信息--活动报名页-wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.GetChefByMBIdCAId(System.Int32,System.Int32)">
+            <summary>
+            获取厨师基本信息--活动报基本信息--wx
+            </summary>
+            <param name="mbId">会员（游客）Id</param>
+            <param name="caId">活动ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.IsChefNull(System.Int32,System.Int32)">
+            <summary>
+             检测是否有为填写完的报名信息--活动首页--wx
+            </summary>
+            <param name="mbId">会员Id</param>
+            <param name="caId">活动Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.GetMemberInfo(System.Object)">
+            <summary>
+            首先查询到会员基本信息，根据姓名，或者会员号（MemberId）--新增厨师--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.AddChefInfo(System.Object)">
+            <summary>
+            增加厨师基本信息--新增厨师--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefController.AddDishChefInfo(System.Object)">
+            <summary>
+            增加厨师菜品基本信息--新增厨师--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.ChefStarController">
+            <summary>
+            星厨API
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.GetChefStarFlavourRec(System.Int32)">
+            <summary>
+            获取当前放开赛区星厨的调料--星厨详情新增--web
+            </summary>
+            <param name="caId">活动ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.AddChefStar(System.Object)">
+            <summary>
+            新增星厨--星厨详情新增--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.AddDishChefStar(System.Object)">
+            <summary>
+            新增（修改）菜品(基本信息)--星厨详情新增--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.AddDishMaterial(System.Collections.Generic.List{ECActivityAPI.Models.DishMaterial})">
+            <summary>
+            新增（修改）星厨调料--星厨详情新增--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.AddDishStep(System.Collections.Generic.List{ECActivityAPI.Models.DishStep})">
+            <summary>
+            新增（修改）菜品步骤--星厨详情新增--web
+            </summary>
+            <param name="requestData">菜品Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.AddFR(System.Object)">
+            <summary>
+            新增(修改)调料推荐--星厨详情新增--web
+            </summary>
+            <param name="requestData">调料推荐Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.GetChefStarList(System.Object)">
+            <summary>
+            查询星厨列表（分页）--星厨列表--web
+            </summary>
+            <param name="caId">活动Id</param>
+            <param name="pageIndex">页数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.GetChefStarByCSId(System.Int32)">
+            <summary>
+            获取星厨详情--星厨详情，星厨详情编辑--web
+            </summary>
+            <param name="csId">星厨Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.UpdateChefStar(System.Object)">
+            <summary>
+            编辑星厨信息--星厨详情编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.GetDishChefStar(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            读取菜品（1个菜）信息--星厨详情，星厨详情编辑--web
+            </summary>
+            <param name="caId">活动Id</param>
+            <param name="dishType">菜品类型</param>
+            <param name="chefStarId">星厨Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.UpdateDishChefStar(System.Object)">
+            <summary>
+            修改菜品信息，1个接口--星厨详情，星厨详情编辑--web
+            </summary>
+            <param name="re">菜品的所有信息</param>
+            <returns>OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ChefStarController.DeleteSingleChefStar(System.Int32)">
+            <summary>
+            删除单个星厨信息--星厨列表--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.DishChefController">
+            <summary>
+            厨师菜品
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishChef(System.Object)">
+            <summary>
+            增加厨师菜品基本（修改）信息--本地菜，创新菜--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishMaterial(System.Collections.Generic.List{ECActivityAPI.Models.DishMaterial})">
+            <summary>
+            新增(修改)导师调料--本地菜，创新菜--wx
+            </summary>
+            <param name="requestData">调料数组</param>
+            <returns>OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishStep(System.Collections.Generic.List{ECActivityAPI.Models.DishStep})">
+            <summary>
+            新增(修改)菜品步骤--本地菜，创新菜--wx
+            </summary>
+            <param name="requestData">步骤数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddFR(System.Object)">
+            <summary>
+            新增(修改)调料推荐--本地菜，创新菜--wx
+            </summary>
+            <param name="requestData">使用调料数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishChefByMemberId(System.Int32,System.Int32)">
+            <summary>
+            读取菜品信息（编辑菜品时）--本地菜，创新菜--wx
+            </summary>
+            <param name="memberId">厨师ID</param>
+            <param name="dishType">菜品类别，1，创新，2，本地</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetFRChef(System.Int32)">
+            <summary>
+            读取活动的厨师调料--本地菜，创新菜--web,wx
+            </summary>
+            <param name="caId">活动Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishListApply(System.Int32,System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+             参赛菜品列表(报名菜品)--参赛菜品--wx
+            </summary>
+            <param name="chefActivityId">区域Id</param>
+            <param name="matchRegionId">赛区Id</param>
+            <param name="openId">OpenId</param>
+            <param name="orderBy">按照哪个排序time,count</param>
+            <param name="isDesc">t,降序，f,升序</param>
+            <param name="pageindex">页数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetMatchRegionByCAId(System.Int32)">
+            <summary>
+            读取活动赛区--参赛菜品--wx
+            </summary>
+            <param name="CAId">活动Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishListApplySelected(System.Int32,System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+             参赛菜品列表(投票菜品)--参赛菜品--wx
+            </summary>
+            <param name="chefActivityId">区域Id</param>
+            <param name="matchRegionId">赛区Id</param>
+            <param name="openId">OpenId</param>
+            <param name="isDesc">t,降序，f,升序</param>
+            <param name="pageindex">页数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishChefDetailByDishId(System.Object)">
+            <summary>
+            获取选手菜品详情--选手菜品详情--wx
+            </summary>
+            <param name="requestData">看过Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishPrasieLog(System.Object)">
+            <summary>
+             增加选手菜品点赞--选手菜品详情,投票菜品详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetChefInfo(System.Int32)">
+            <summary>
+            选手介绍--选手菜品详情--wx
+            </summary>
+            <param name="dishId">菜品Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishComment(System.Object)">
+            <summary>
+            增加选手菜品留言信息--选手菜品详情,投票菜品详情--wx
+            </summary>
+            <param name="requsetData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishChefComment(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            选手菜品留言信息--选手菜品详情,投票菜品详情--wx
+            </summary>
+            <param name="dishId">菜品ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetSelectedDishChef(System.Object)">
+            <summary>
+            增加看过信息，获取投票菜品信息--投票菜品详情--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.AddDishSelectedLog(System.Object)">
+            <summary>
+            增加投票数量--投票菜品详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetDishChefList(System.Object)">
+            <summary>
+            获取报名信息列表--报名信息--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetAllByChefActivityId(System.Int32)">
+            <summary>
+            根据活动ID获取赛区--报名信息--web
+            </summary>
+            <param name="caId">活动ID</param>
+            <returns>赛区信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetSetSelectedDishByChefId(System.Int32)">
+            <summary>
+            获取设置投票菜品--报名信息--web
+            </summary>
+            <param name="chefId">厨师Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.SetSelectedDihsChef(System.Object)">
+            <summary>
+            设置为投票菜品--报名信息--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetChefByChefId(System.Int32)">
+            <summary>
+            获取厨师的基本信息(包括OpenId)--报名信息审核--web
+            </summary>
+            <param name="chefId">厨师Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.GetAuditDishChef(System.Int32,System.Int32)">
+            <summary>
+             获取菜品信息--报名信息审核--web
+            </summary>
+            <param name="chefId">厨师Id</param>
+            <param name="dishType">菜品类别</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.SetApplyDihsChef(System.Object)">
+            <summary>
+            设置审核通过--报名信息审核--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.UpdateChef(System.Object)">
+            <summary>
+            厨师信息编辑--报名信息编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefController.UpdateDishChef(System.Object)">
+            <summary>
+            菜品信息编辑--报名信息编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.DishChefStarController">
+            <summary>
+            星厨菜品
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.GetChefStarAll(System.Object)">
+             <summary>
+            星厨.家厨师列表，城市，搜索框--星厨家--wx
+             </summary>
+             <param name="requestData"></param>
+             <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.GetChefStarDetail(System.Object)">
+            <summary>
+            星厨介绍,代表菜品--星厨详情---wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.AddChefStarComment(System.Object)">
+            <summary>
+            增加星厨留言--星厨详情--wx
+            </summary>
+            <param name="requsetData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.GetChefStarComment(System.Int32,System.Int32)">
+            <summary>
+            星厨留言信息--星厨详情--wx
+            </summary>
+            <param name="dishId">菜品ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.GetDishChefStar(System.Object)">
+            <summary>
+            增加看过信息，获取星厨菜品信息，推荐调料，是否点赞--星厨菜品详情--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.AddDishComment(System.Object)">
+            <summary>
+            增加星厨菜品留言信息--星厨菜品详情--wx
+            </summary>
+            <param name="requsetData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.GetDishChefComment(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            查询星厨菜品留言--星厨菜品菜品详情--wx
+            </summary>
+            <param name="dishId">菜品ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishChefStarController.AddDishPrasieLog(System.Object)">
+            <summary>
+             增加星厨菜品点赞--星厨菜品详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishCollecLogController.AddDishCollectLog(System.Object)">
+            <summary>
+            增加收藏菜品信息--菜品详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishCollecLogController.DelDishCollectLog(System.Object)">
+            <summary>
+            取消收藏菜品信息--菜品详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishCollecLogController.GetDishCollectState(System.Object)">
+            <summary>
+            菜品收藏状态--菜品详情页--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.DishTutorController">
+            <summary>
+            导师菜品
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.AddDishTutor(System.Object)">
+            <summary>
+            新增（修改）导师菜品--导师新增--web
+            </summary>
+            <param name="requetData">导师菜品Json</param>
+            <returns>OK，成功，No失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.AddDishMaterial(System.Collections.Generic.List{ECActivityAPI.Models.DishMaterial})">
+            <summary>
+            新增(修改)导师调料--导师新增--web
+            </summary>
+            <param name="requestData">调料数组</param>
+            <returns>OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.AddDishStep(System.Collections.Generic.List{ECActivityAPI.Models.DishStep})">
+            <summary>
+            新增(修改)菜品步骤--导师新增--web
+            </summary>
+            <param name="requestData">菜品Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.AddFR(System.Object)">
+            <summary>
+            新增(修改)调料推荐--导师新增--web
+            </summary>
+            <param name="requestData">调料推荐Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.GetToutDishSingle(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取导师菜品信息(1个菜品)--导师菜品修改页面--web
+            </summary>
+            <param name="caId">活动ID</param>
+            <param name="dishType">菜品类型</param>
+            <param name="tutorId">导师ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.GetcaNameMRFRBycaId(System.Int32)">
+            <summary>
+            获取（1个活动）活动名称，赛区，所用导师调料--新增导师页面--web
+            </summary>
+            <param name="caid">活动Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.DishTutorController.UpdateDishTutor(System.Object)">
+            <summary>
+            修改导师菜品信息，一个接口--导师菜品修改页面--web
+            </summary>
+            <param name="re">菜品的所有信息</param>
+            <returns>OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ECBrowseController.AddECBrowseDetails(System.Object)">
+            <summary>
+            增加页面访问--页面访问--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ECBrowseController.AddECWXTranspondDetails(System.Object)">
+            <summary>
+             增加转发页面--页面访问--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.FlavourRecController.AddFlavourRec(System.Object)">
+            <summary>
+            新增活动调料--调料新增--web
+            </summary>
+            <param name="requestData">调料Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.FlavourRecController.GetSingeByFR(System.Int32)">
+            <summary>
+            获取单一调料--调料编辑--web
+            </summary>
+            <param name="fr">调料Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.FlavourRecController.UpdateFlavour(System.Object)">
+            <summary>
+            编辑调料--调料编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.FlavourRecController.GetSingeByCA(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            获取调料（分页）列表--调料列表--web
+            </summary>
+            <param name="ca">活动Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="type">类别，1，导师，2，厨师  3，星厨</param>
+            <param name="name">调料名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.FlavourRecController.GetFRBycaType(System.Int32,System.Int32)">
+            <summary>
+            获取添加调料时的全部--调料列表--web
+            </summary>
+            <param name="ca">活动Id</param>
+            <param name="fType">调料类型 1，导师，2，厨师  3，星厨</param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.LecturerController">
+            <summary>
+            培训交流
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.AddCulLecturerSingle(System.Object)">
+            <summary>
+             新增培训交流，新增讲师--培训交流新增--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetLecturerByCuInterId(System.Int32)">
+            <summary>
+            获取培训交流活动，讲师信息--培训交流编辑--web
+            </summary>
+            <param name="cuId">培训交流活动Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetLecturer(System.Int32)">
+            <summary>
+            获取讲师信息--培训交流编辑--web
+            </summary>
+            <param name="lecId">讲师ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetCultivate(System.Int32)">
+            <summary>
+            获取培训交流活动--培训交流编辑--web
+            </summary>
+            <param name="cu">培训交流Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.AddLecturer(ECActivityAPI.Models.Lecturer)">
+            <summary>
+             新增单一讲师--培训交流编辑--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.UpdateCultivate(ECActivityAPI.Models.CultivateInterflow)">
+            <summary>
+            编辑培训交流活动--培训交流编辑--web
+            </summary>
+            <param name="cu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.DelLecturer(System.Object)">
+            <summary>
+             删除单一讲师--培训交流编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.UpdateCultivateLecturer(System.Object)">
+            <summary>
+            编辑培训交流活动，编辑讲师，包含新增--培训交流编辑--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetCultivateList(System.Object)">
+            <summary>
+            获取培训交流列表--培训交流--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetCultivateInterflowList(System.Object)">
+            <summary>
+            获取培训交流列表--培训交流列表--wx
+            </summary>
+            <param name="requestDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetCultivateDetail(System.Object)">
+            <summary>
+            读取培训交流详情，增加看过信息--培训详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.AddCultivatePraise(System.Object)">
+            <summary>
+             增加点赞--培训交流详情--wx
+            </summary>
+            <param name="requsetData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.AddCultivateComment(System.Object)">
+            <summary>
+             增加评论--培训交流详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.LecturerController.GetCultivateComment(System.Object)">
+            <summary>
+            获取培训交流评论--培训交流详情--wx
+            </summary>
+            <param name="?"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MatchRegionController.AddMatchRegion(System.Object)">
+            <summary>
+            增加活动赛区--活动列表--web
+            </summary>
+            <param name="requestData"> 厨师活动赛区格式是数组</param>
+            <returns>OK,成功；No,失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MatchRegionController.GetAllByChefActivityId(System.Int32)">
+            <summary>
+            根据活动ID获取赛区--活动列表--web
+            </summary>
+            <param name="requestDate">活动ID</param>
+            <returns>赛区信息</returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.MemberFootPrintController">
+            <summary>
+            会员，队员足迹控制器
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MemberFootPrintController.FootPirntMember(System.Object)">
+            <summary>
+            获取会员，队员足迹--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.MySelfDishKuController">
+            <summary>
+            个人菜品库
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.AddDish(System.Object)">
+            <summary>
+            增加个人菜品库菜品--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMy(System.Object)">
+            <summary>
+            获取个人菜品库 “我的”--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMyCollect(System.Object)">
+            <summary>
+            获取个人菜品库“收藏”--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMySelfFR">
+            <summary>
+             获取个人菜品库推荐调料--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.AddDishVisitLog(System.Object)">
+            <summary>
+             增加个人菜品库浏览次数--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.IsOverLoad(System.Object)">
+            <summary>
+             当前上传个人菜品库是否超过规定上传菜数--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetDishComment(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取个人菜品库留言信息--wx
+            </summary>
+            <param name="dishId">菜品Id</param>
+            <param name="index">页数</param>
+            <param name="pageSize">页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMySelfDish(System.Int32)">
+            <summary>
+            获取个人菜品库菜品信息(编辑使用)--个人菜品库编辑页面---wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.UpdateMySelfDishWX(System.Object)">
+            <summary>
+            修改个人菜品菜品（1个接口修改）--个人菜品库编辑页面--wx
+            </summary>
+            <returns>不可修改，OK，No</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.AddMySelfFR(System.Object)">
+            <summary>
+            增加个人菜品库推荐调料--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.UpdateMySelfFR(System.Object)">
+            <summary>
+            后台修改个人菜品库推荐调料--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMySelfDishKu(System.Object)">
+            <summary>
+            个人菜品库上传的菜品列表--反馈菜栏下--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMySelfDish(System.Object)">
+            <summary>
+            获取个人菜品库菜品信息(编辑使用)--一道完整菜品--web，wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.MySelfDishIsApply(System.Object)">
+            <summary>
+            个人菜品库审核--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.GetMySelfFRWeb">
+            <summary>
+            获取个人菜品库推荐调料---web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.UpdateMySelfDish(System.Object)">
+            <summary>
+            修改个人菜品菜品（1个接口修改）--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.MySelfDishKuController.SentTemplate(System.Object)">
+            <summary>
+            发送模板消息--个人菜品库审核模板消息--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.ProductController">
+             <summary>
+            产品库API
+             </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddProductFirst(System.Object)">
+            <summary>
+            增加产品一级分类--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductFirst(System.Object)">
+            <summary>
+            获取产品一级分类列表--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductFirstAll">
+            <summary>
+            获取产品一级类别全部--产品库后台--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.UpdateProductFirst(System.Object)">
+            <summary>
+            修改产品一级分类--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddProductSecond(System.Object)">
+            <summary>
+            增加,修改产品二级分类--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductSecond(System.Object)">
+            <summary>
+            根据产品一级分类获取二级分类--产品库后台--web
+            </summary>
+            <param name="requesData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddProductKuInfo(System.Object)">
+            <summary>
+            增加,修改产品库产品信息（包括规格信息）--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetPKIList(System.Object)">
+            <summary>
+             获取产品库列表--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetPKIOne(System.Object)">
+            <summary>
+            根据一个产品ID获取产品全部信息--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddVirtualClassify(System.Object)">
+            <summary>
+            增加虚拟类分类--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetVCList">
+            <summary>
+            获取虚拟类分类列表--产品库后台--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.UpdateVC(System.Object)">
+            <summary>
+            修改单个虚拟类分类--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSpecificationOnly(System.Object)">
+            <summary>
+            根据产品信息Id获取规格信息列表--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.UpdateSPPic(System.Object)">
+            <summary>
+            修改规格上传图片信息--产品库后台--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddSpecificationConf(System.Object)">
+            <summary>
+            增加，修改规格配置信息--规格信息--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSpecificationConf(System.Object)">
+            <summary>
+            获取规格配置信息--规格信息--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddProductIdKuInfoRD(System.Object)">
+            <summary>
+            研发信息增加--研发信息--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductIdKuInfoRD(System.Object)">
+            <summary>
+            获取研发信息--研发信息--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSDish(System.Object)">
+            <summary>
+            获取产品库推荐使用的调料--应用菜品--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddDishProduct(System.Object)">
+            <summary>
+            增加，修改产品库菜品信息--应用菜品--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetDishProduct(System.Object)">
+            <summary>
+            根据产品库菜品ID获取菜品信息--应用菜品--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetRDDishProductList(System.Object)">
+            <summary>
+            获取研发菜品列表--应用菜品--web
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductFirst">
+            <summary>
+             获取一级分类--产品库调味--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetVC">
+            <summary>
+            获取虚拟分类--产品库调味--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSpecificationByVCId(System.Object)">
+            <summary>
+            根据虚拟分类Id获取规格--产品库调味--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSpecificationByVCIdList(System.Object)">
+            <summary>
+            根据虚拟分类Id获取规格列表--产品库虚拟列表--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductSecondWX(System.Object)">
+            <summary>
+            根据一级分类获取二级分类--一级分类列表页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductFirstList(System.Object)">
+            <summary>
+            获取一级分类规格列表--一级分类列表页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetProductDetail(System.Object)">
+            <summary>
+            获取规格基本信息--产品、规格、详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddSpecificationPraiseLog(System.Object)">
+            <summary>
+            增加规格点赞数据--产品、规格、详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddSpecificationVisitLog(System.Object)">
+            <summary>
+            增加规格看过量--产品、规格、详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddSpecificationComment(System.Object)">
+            <summary>
+            增加规格留言数据--产品、规格、详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetSpecificationComment(System.Object)">
+            <summary>
+             查询产品留言数据--产品、规格、详情页--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetDishProductWX(System.Object)">
+            <summary>
+            获取产品菜品详细信息--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddDishProductPrasie(System.Object)">
+            <summary>
+            增加产品菜品点赞--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddDishVisit(System.Object)">
+            <summary>
+            增加产品菜品浏览次数--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddDishComment(System.Object)">
+            <summary>
+            增加产品菜品留言--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.GetDishComment(System.Object)">
+            <summary>
+            查询产品菜品留言--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ProductController.AddDishCollect(System.Object)">
+            <summary>
+            增加或取消收藏--产品库菜品详情（做成通用接口）--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.SigninCreditController">
+            <summary>
+            每天签到获取积分
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.SigninCreditController.AddSigninCredit(System.Object)">
+            <summary>
+            新增抽奖积分--签到--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.SigninCreditController.IsDraw(System.Object)">
+            <summary>
+            返回当天是否签到--签到--wx
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.SigninCreditController.FlagDraw(System.Object)">
+            <summary>
+            标记哪天抽奖，新增--签到--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.SigninCreditController.GetSignin(System.Object)">
+            <summary>
+            返回最近七天签到，当天是否签到--签到--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Controllers.TutorCommentController">
+            <summary>
+            导师留言
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.AddTutorComment(System.Object)">
+            <summary>
+            新增导师留言--导师介绍--wx
+            </summary>
+            <param name="requestData">留言Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.GetTutorCommentAllByTutorId(System.Int32,System.Int32)">
+            <summary>
+            导师留言分页查询--导师介绍--wx，web
+            </summary>
+            <param name="tutorId">导师ID</param>
+            <param name="pageIndex">页数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.DelTutorComment(System.Int32)">
+            <summary>
+            导师留言删除--后台预留--web
+            </summary>
+            <param name="tutorCommentId"></param>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.AddDishComment(System.Object)">
+            <summary>
+            新增菜品留言,刷新留言信息--导师介绍--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.GetDishCommentByDishId(System.Int32,System.Int32,System.Int32)">
+            <summary>
+             菜品留言分页查询--导师菜品详情--wx，web
+            </summary>
+            <param name="dishId">菜品Id</param>
+            <param name="pageIndex">页数</param>
+            <param name="pageSize">页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.DelDishCommentById(System.Object)">
+            <summary>
+            菜品留言删除根据Id--后台预留--web
+            </summary>
+            <param name="Id">菜品ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorCommentController.AddDishPrasieLog(System.Object)">
+            <summary>
+             增加导师菜品点赞--导师菜品详情--wx
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.AddTutor(System.Object)">
+            <summary>
+            增加导师--导师详情新增--web
+            </summary>
+            <param name="requestDate">导师JSon</param>
+            <returns>OK,成功，No，失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.UpdateSingle(System.Object)">
+            <summary>
+            修改导师对象信息--导师详情新增--web
+            </summary>
+            <param name="bannerDate">导师对象</param>
+            <returns>OK，修改成功，No，失败</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetAllTutor(System.Object)">
+            <summary>
+            获取全部导师信息，给后台列表看--导师列表--web
+            </summary>
+            <param name="chefActivityId">活动Id</param>
+            <param name="PageIndex">页数</param>
+            <param name="PageSize">页大小</param>
+            <returns>全部导师信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetTutorcaMRBy(System.Int32)">
+            <summary>
+            获取导师基本资料，活动信息，赛区--导师编辑页面--web
+            </summary>
+            <param name="tutorId">导师ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.DeleteSingleTutor(System.Int32)">
+            <summary>
+            删除单个导师信息--导师列表--web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetTutorListByChefActivityId(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据列表页获取导师信息--导师列表--wx
+            </summary>
+            <param name="chefActivityId">活动Id</param>
+            <param name="pageIndex">页数</param>
+            <param name="pageSize">页大小</param>
+            <returns>活动全部信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetTutorDTByTutorId(System.Int32)">
+            <summary>
+            获取导师基本资料，代表菜品--导师介绍--wx
+            </summary>
+            <param name="tutorid">导师ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetDishTutorDetail(System.Object)">
+            <summary>
+            增加导师看过数量,一次性读取菜品信息--导师菜品详情页面--wx
+            </summary>
+            <param name="requestData">菜品看过次数</param>
+            <returns></returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetTutorByTutorId(System.Int32)">
+            <summary>
+            获取单一导师信息--导师详情页--wx
+            </summary>
+            <param name="tutorId">导师编号</param>
+            <returns>导师信息</returns>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.TutorController.GetHtmlImageUrlList(System.String)">
+            <summary>   
+            取得HTML中所有图片的 URL。   
+            </summary>   
+            <param name="sHtmlText">HTML代码</param>   
+            <returns>图片的URL列表</returns>   
+        </member>
+        <member name="T:ECActivityAPI.Controllers.ValuesController">
+            <summary>
+            测试API
+            </summary>
+        </member>
+        <member name="M:ECActivityAPI.Controllers.ValuesController.Get(System.String)">
+            <summary>
+            测试接口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ECActivityAPI.Models.BusinessContribution">
+            <summary>
+            生意贡献度临时表20180424
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ChefStar">
+            <summary>
+            星厨
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ChefStarComment">
+            <summary>
+            星厨留言
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.CultivateComment">
+            <summary>
+            培训交流留言
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.CultivateInterflow">
+            <summary>
+            培训交流
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.CultivatePraise">
+            <summary>
+            培训交流攒
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishChefStar">
+            <summary>
+            星厨菜品
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishCollectLog">
+            <summary>
+            收藏
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishMaterial">
+            <summary>
+            菜品调料
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishProduct">
+            <summary>
+            产品库菜品类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishProductRF">
+            <summary>
+            产品库推荐调料类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishSelectedLog">
+            <summary>
+            菜品投票Log
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.DishStep">
+            <summary>
+            菜品步骤
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ECBrowse">
+            <summary>
+            EC活动浏览数据总统计
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ECBrowseDetails">
+            <summary>
+            EC活动信息浏览详情
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ECWXTranspondDetails">
+            <summary>
+            EC活动微信转发详情
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.Lecturer">
+            <summary>
+            讲师
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.MatchRegion">
+            <summary>
+            赛区表
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.MemberIntegralDetail">
+            <summary>
+            会员积分详情
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.MySelfDishKu">
+            <summary>
+            个人菜品库
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.MySelfFR">
+            <summary>
+            个人菜品库推荐调料
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.MySelfFRRole">
+            <summary>
+            个人菜品库
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ProductFirst">
+            <summary>
+            产品一级分类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ProductIdKuInfoRD">
+            <summary>
+            产品库研发基本信息类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ProductIdKuInfoRDMaster">
+            <summary>
+            产品库研发大师信息类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ProductKuInfo">
+            <summary>
+            产品库类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.ProductSecond">
+            <summary>
+            产品二级分类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.RegistCode">
+            <summary>
+            会员与队员关联表
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SigninCredit">
+            <summary>
+            签到积分
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SigninCreditLog">
+            <summary>
+            签到积分日志
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.Specification">
+            <summary>
+            产品规格类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SpecificationComment">
+            <summary>
+            规格留言类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SpecificationConf">
+            <summary>
+            规格配置类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SpecificationConfArea">
+            <summary>
+            规格配置地区类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.SpecificationConfVC">
+            <summary>
+            规格配置虚拟分类信息类
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.URLName">
+            <summary>
+            页面名称
+            </summary>
+        </member>
+        <member name="T:ECActivityAPI.Models.VirtualClassify">
+            <summary>
+            虚拟分类 类
+            </summary>
+        </member>
+    </members>
+</doc>

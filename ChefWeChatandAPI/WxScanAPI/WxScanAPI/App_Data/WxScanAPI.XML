@@ -1,0 +1,1229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WxScanAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WxScanAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,WxScanAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,WxScanAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:WxScanAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},WxScanAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:WxScanAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(WxScanAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WxScanAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,WxScanAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:WxScanAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:WxScanAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WxScanAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WxScanAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:WxScanAPI.Common.EncryptHelper.Confusion(System.String)">
+            <summary>
+            混淆字符串
+            </summary>
+            <param name="encryptString">混淆字符串</param>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.CreateExcel(System.Data.DataTable,System.String)">
+            <summary>
+            以HTTP的形式创建Excel文件
+            </summary>
+            <param name="ds"></param>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.CreateExcelToMS(System.Data.DataTable,System.String)">
+            <summary>
+            创建Excel返回MemoryStream
+            </summary>
+            <param name="ds"></param>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.SaveExcel``1(System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            保存Excel
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.WriteToStream(NPOI.HSSF.UserModel.HSSFWorkbook)">
+            <summary>
+            写入字符流
+            </summary>
+            <param name="hssfworkbook"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.GenerateData(NPOI.HSSF.UserModel.HSSFWorkbook@,System.Data.DataTable)">
+            <summary>
+            数据转换
+            </summary>
+            <param name="hssfworkbook"></param>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.InitializeWorkbook(NPOI.HSSF.UserModel.HSSFWorkbook@)">
+            <summary>
+            初始化工作薄
+            </summary>
+            <param name="hssfworkbook"></param>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.EntityListToDataTable``1(System.Collections.Generic.List{``0})">
+            <summary>
+            泛型转换成DataTable
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.GetDisplayName(System.Reflection.PropertyInfo)">
+            <summary>
+            获取字段Display特性
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.ExcelToDataTable(System.String)">
+            <summary> 
+            读取Excel文件到DataSet中 
+            </summary> 
+            <param name="filePath">文件路径</param>
+            <returns></returns> 
+        </member>
+        <member name="M:WxScanAPI.Common.ExcelExtend.ExcelToDataTable2(System.String)">
+            <summary> 
+            读取Excel文件到DataSet中,包含空的cell
+            </summary> 
+            <param name="filePath">文件路径</param>
+            <returns></returns> 
+        </member>
+        <!-- 对于成员“M:WxScanAPI.Common.LogHelper.WriteMsg(System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="M:WxScanAPI.Common.QrCodeHelper.ToUrl(System.String,System.Int32)">
+            <summary>
+            生成二维码并返回地址
+            </summary>
+            <param name="qrcontent">生成二维码的内容</param>   
+            <param name="modulesize">二维码黑白线条的宽度</param>
+            <returns>二维码字节数组</returns>   
+        </member>
+        <member name="M:WxScanAPI.Common.QrCodeHelper.ToBytes(System.String,System.Int32)">
+            <summary>
+            生成二维码并返回地址
+            </summary>
+            <param name="qrcontent">生成二维码的内容</param>   
+            <param name="modulesize">二维码黑白线条的宽度</param>
+            <returns>二维码字节数组</returns>   
+        </member>
+        <member name="M:WxScanAPI.Common.QrCodeHelper.ToBytes(System.String,System.String,System.Int32)">
+            <summary>
+            生成二维码并返回地址
+            </summary>
+            <param name="qrcontent">生成二维码的内容</param>   
+            <param name="modulesize">二维码黑白线条的宽度</param>
+            <returns>二维码字节数组</returns>   
+        </member>
+        <member name="M:WxScanAPI.Common.QrCodeHelper.Renderer(System.String,System.Drawing.Brush,System.Drawing.Brush,System.Int32,Gma.QrCodeNet.Encoding.Windows.Render.QuietZoneModules,System.Drawing.Bitmap)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="qrcontent">生成二维码的内容</param>
+            <param name="darkbrush">二维码线条的颜色</param>
+            <param name="lightbrush">二维码线条空白的颜色</param>
+            <param name="modulesize">二维码图片的大小（1=41px）</param>
+            <param name="quietzonemodules">二维码外围空白</param>
+            <returns>二维码字节数组</returns>   
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.GetMoney(System.Int32,System.String,System.String)">
+            <summary>
+            生成红包算法
+            </summary>
+            <param name="nowdayscan">当日扫码次数</param>
+            <param name="openid">微信id</param>
+            <param name="nowmonth">当前月份</param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.PayAction(System.String)">
+            <summary>
+            付款操作
+            </summary>
+            <param name="openid">微信openid</param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.CorpPay(System.String,System.String)">
+            <summary>
+            企业付款(请求需要双向证书)
+            企业付款业务是基于微信支付商户平台的资金管理能力，为了协助商户方便地实现企业向个人付款，
+            针对部分有开发能力的商户，提供通过API完成企业付款的功能。 比如目前的保险行业向客户退保、给付、理赔。
+            企业付款将使用商户的可用余额，需确保可用余额充足。查看可用余额、充值、提现请登录商户平台“资金管理”进行操作。https://pay.weixin.qq.com/ 
+            注意：与商户微信支付收款资金并非同一账户，需要单独充值。
+            </summary>
+            <param name="amount">企业支付数据</param>
+            <param name="openid">微信openid</param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.AddAlertLog(System.String,System.String,System.String)">
+            <summary>
+            增加报警信息
+            </summary>
+            <param name="openid"></param>
+            <param name="content"></param>
+            <param name="alertType">报警类型</param>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.RedPackPay">
+            <summary>
+            红包支付
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.Str2MD5(System.String)">
+            <summary>
+            字符串MD5加密
+            </summary>
+            <param name="sStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.GetIsRegist(System.String)">
+            <summary>
+            通过openid查询是否已经注册 
+            1:已注册的可正常扫码的会员; 
+            0:未注册的会员;
+            -1:队员,不能扫码;  
+            -2:已注册的岗位是调味品供货商的会员,不能扫码
+            </summary>
+            <param name="openid">微信openid</param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.CreateQrCode(System.Int32,System.Int32)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.CheckSn(System.String,System.String)">
+            <summary>
+            判断二维码是否有效
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.RedPack.Confusion(System.String)">
+            <summary>
+            混淆字符串
+            </summary>
+            <param name="encryptString">混淆字符串</param>
+        </member>
+        <member name="T:WxScanAPI.Common.SqlHelper">
+            <summary>
+            SqlHelper数据层
+            </summary>
+        </member>
+        <member name="F:WxScanAPI.Common.SqlHelper.connection">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.#ctor">
+            <summary>
+            初始化连接对象
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.GetCount(System.Data.CommandType,System.String)">
+            <summary>
+            返回数量
+            </summary>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将SqlParameters插入至SqlParameter.
+            </summary>
+            <param name="command">需要添加SqlParameters的Command</param>
+            <param name="commandParameters">被添加到Command的SqlParameters数组</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            将DataRow列的值插入到SqlParameters数组中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="dataRow">DataTable数据行</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            将数组中的值复制到SqlParameters中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="parameterValues">对象数组</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            根据Connection, Transaction, CommandType and Parameters得到指定的Command
+            </summary>
+            <param name="command">指定的SqlParameter</param>
+            <param name="transaction">有效的SqlTransaction, 或 'null'</param>
+            <param name="commandType">CommandType类型(stored procedure, text, etc.)</param>
+            <param name="commandText">The Stored procedure Name or T-SQL command</param>
+            <param name="commandParameters">SqlParameters数组 或 'null'</param>
+            <param name="mustCloseConnection"><c>true</c></param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand. 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            使用提供的参数执行SqlCommand,带参数 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">SqlParamters数组</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不提供SqlParameter . 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders",transaction);
+            </remarks>        
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,提供SqlParameter
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24),trans);
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataTable dt = ExecuteDataTable(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataTable内存表</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction,WxScanAPI.Common.SqlHelper.SqlConnectionOwnership)">
+            <summary>
+            调用ExecuteReader,通过提供CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParameters or 'null'</param>
+            <param name="transaction">一个有效的SqlTransaction, or 'null'</param>
+            <param name="connectionOwnership">标识连接对象是由caller提供还是由SqlHelper提供</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            调用ExecuteReader,不带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            调用ExecuteReader,带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,无参数,属于外部调用 
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,带参数,属于外部调用
+            </summary>
+            <remarks>
+              SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            执行SqlCommand
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行SqlCommand 
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">对象数组，将该值导入相应的参数中</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>    
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>   
+            <param name="commandParameters">参数数组</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射(私有方法)
+            </summary>
+            <remarks>
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.ExecutePageDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            查询出指定页数的数据，返回DataSet
+            </summary>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="pageSize">每页数量</param>
+            <param name="currentPageIndex">当前页</param>
+            <param name="commandParameters">参数SqlParameter</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.Dispose(System.Boolean)">
+            <summary>
+            如果连接未关闭，则关闭连接  
+            </summary>
+            /// <param name="disposing">判断参数</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper.Dispose">
+            <summary>
+            重写Dispose  
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Common.SqlHelper.GetConnection">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Common.SqlHelper.SqlConnectionOwnership">
+            <summary>
+            枚举表示该连接不论是调用者还是SqlHelper,当执行ExecuteReader()时需要用CommandBehavior
+            </summary>
+        </member>
+        <member name="F:WxScanAPI.Common.SqlHelper.SqlConnectionOwnership.Internal">
+            <summary>连接由SqlHelper管理和使用</summary>
+        </member>
+        <member name="F:WxScanAPI.Common.SqlHelper.SqlConnectionOwnership.External">
+            <summary>连接由调用者管理和使用</summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlHelper2.GetCount(System.Data.CommandType,System.String)">
+            <summary>
+            返回数量
+            </summary>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WxScanAPI.Common.SqlParamHelper">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.Append(WxScanAPI.Common.SqlParamHelper)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <!-- 对于成员“M:WxScanAPI.Common.SqlParamHelper.Select(System.Object[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:WxScanAPI.Common.SqlParamHelper.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="P:WxScanAPI.Common.SqlParamHelper.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Common.SqlParamHelper.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Common.SqlParamHelper.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="T:WxScanAPI.Common.SqlParamHelper.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:WxScanAPI.Common.SqlParamHelper.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:WxScanAPI.Common.StringOperate.Md5Hash(System.String)">
+            <summary>
+            32位MD5加密
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.StringOperate.GetRandomString(System.Int32)">
+            <summary>
+            生成随机字符串
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.WeiXinHelper.SendCorpPayWithCert(System.String,System.String)">
+            <summary>
+            进行企业付款
+            </summary>
+            <param name="requestdata"></param>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.WeiXinHelper.SendRedPackWithCert(System.String,System.String)">
+            <summary>
+            发送现金红包
+            </summary>
+            <param name="requestdata"></param>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.XmlHelpler.GetRedPackPayXml(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            获取现金红包的xml
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Common.XmlHelpler.GetCorpPayXml(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            获取企业付款到用户零钱的xml
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.CreateVisitor(System.Object)">
+            <summary>
+            扫码用户注册  08-17
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.Generate(System.Int32)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="num">个数</param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.TiXian(System.Object)">
+            <summary>
+            提现操作
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.GetHistory(System.String)">
+            <summary>
+            用户扫描提现记录
+            </summary>
+            <param name="openid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.Scan(System.Object)">
+            <summary>
+            微信扫码
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WxScanAPI.Controllers.RedPackController.CheckRule(System.String,System.String)">
+            <summary>
+            验证抽奖规则
+            </summary>
+            <param name="openid"></param>
+            <param name="scode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:WxScanAPI.Models.RScanJson.kTxMoney">
+            <summary>
+            累计中奖未提现金额
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RScanJson.isKeTiXian">
+            <summary>
+            是否可提现
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RHistoryJson.kTxMoney">
+            <summary>
+            可以提现的金额
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RHistoryJson.isKeTiXian">
+            <summary>
+            是否可提现
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RRedPack.Message">
+            <summary>
+            返回状态
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RRedPack.Status">
+            <summary>
+            返回状态
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RRedPack.Money">
+            <summary>
+            本次中奖金额
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RRedPack.TotalMoney">
+            <summary>
+            累计中奖金额
+            </summary>
+        </member>
+        <member name="P:WxScanAPI.Models.RRedPack.IsKeTiXian">
+            <summary>
+            是否可提现
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1325 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketActivityAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,MarketActivityAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,MarketActivityAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:MarketActivityAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},MarketActivityAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(MarketActivityAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,MarketActivityAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:MarketActivityAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MarketActivityAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MarketActivityAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.CacheExtend.CacheInsert(System.String,System.Object,System.DateTime)">
+            <summary>
+            插入缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration">过期时间</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.CacheExtend.CacheInsert(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            插入缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="slidingExpiration">相对过期时间间隔</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.CacheExtend.GetCache``1(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration"></param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.CacheExtend.HasCache(System.String)">
+            <summary>
+            缓存是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.CacheExtend.CacheRemove(System.String)">
+            <summary>
+            删除缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.JsonHelper.ObjectToJson(System.Object)">
+            <summary>
+            对象序列化成json
+            </summary>
+            <param name="toJsonValue">要转化成Json的对象</param>
+            <returns>返回序列化后的字符串</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.JsonHelper.JsonToObject``1(System.String)">
+            <summary>
+            json反序列化成对象
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.JsonHelper.JsonToList``1(System.String)">
+            <summary>
+            json反序列化成list
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.LogHelper.WriteLog(System.String,System.String)">
+            <summary>
+            写日志(用于跟踪)
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.PostUrl.PostJson(System.String,System.String)">
+            <summary>
+            post提交json
+            </summary>
+            <param name="url"></param>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MarketActivityAPI.Common.SqlHelper">
+            <summary>
+            SqlHelper数据层
+            </summary>
+        </member>
+        <member name="F:MarketActivityAPI.Common.SqlHelper.connection">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.#ctor">
+            <summary>
+            初始化连接对象
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将SqlParameters插入至SqlParameter.
+            </summary>
+            <param name="command">需要添加SqlParameters的Command</param>
+            <param name="commandParameters">被添加到Command的SqlParameters数组</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            将DataRow列的值插入到SqlParameters数组中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="dataRow">DataTable数据行</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            将数组中的值复制到SqlParameters中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="parameterValues">对象数组</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            根据Connection, Transaction, CommandType and Parameters得到指定的Command
+            </summary>
+            <param name="command">指定的SqlParameter</param>
+            <param name="transaction">有效的SqlTransaction, 或 'null'</param>
+            <param name="commandType">CommandType类型(stored procedure, text, etc.)</param>
+            <param name="commandText">The Stored procedure Name or T-SQL command</param>
+            <param name="commandParameters">SqlParameters数组 或 'null'</param>
+            <param name="mustCloseConnection"><c>true</c></param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand. 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            使用提供的参数执行SqlCommand,带参数 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">SqlParamters数组</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不提供SqlParameter . 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders",transaction);
+            </remarks>        
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,提供SqlParameter
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24),trans);
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataTable dt = ExecuteDataTable(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataTable内存表</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction,MarketActivityAPI.Common.SqlHelper.SqlConnectionOwnership)">
+            <summary>
+            调用ExecuteReader,通过提供CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParameters or 'null'</param>
+            <param name="transaction">一个有效的SqlTransaction, or 'null'</param>
+            <param name="connectionOwnership">标识连接对象是由caller提供还是由SqlHelper提供</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            调用ExecuteReader,不带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            调用ExecuteReader,带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,无参数,属于外部调用 
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,带参数,属于外部调用
+            </summary>
+            <remarks>
+              SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            执行SqlCommand
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行SqlCommand 
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">对象数组，将该值导入相应的参数中</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>    
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>   
+            <param name="commandParameters">参数数组</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射(私有方法)
+            </summary>
+            <remarks>
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.ExecutePageDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            查询出指定页数的数据，返回DataSet
+            </summary>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="pageSize">每页数量</param>
+            <param name="currentPageIndex">当前页</param>
+            <param name="commandParameters">参数SqlParameter</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.Dispose(System.Boolean)">
+            <summary>
+            如果连接未关闭，则关闭连接  
+            </summary>
+            /// <param name="disposing">判断参数</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlHelper.Dispose">
+            <summary>
+            重写Dispose  
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Common.SqlHelper.GetConnection">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Common.SqlHelper.SqlConnectionOwnership">
+            <summary>
+            枚举表示该连接不论是调用者还是SqlHelper,当执行ExecuteReader()时需要用CommandBehavior
+            </summary>
+        </member>
+        <member name="F:MarketActivityAPI.Common.SqlHelper.SqlConnectionOwnership.Internal">
+            <summary>连接由SqlHelper管理和使用</summary>
+        </member>
+        <member name="F:MarketActivityAPI.Common.SqlHelper.SqlConnectionOwnership.External">
+            <summary>连接由调用者管理和使用</summary>
+        </member>
+        <member name="T:MarketActivityAPI.Common.SqlParamHelper">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.Append(MarketActivityAPI.Common.SqlParamHelper)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <!-- 对于成员“M:MarketActivityAPI.Common.SqlParamHelper.Select(System.Object[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="P:MarketActivityAPI.Common.SqlParamHelper.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Common.SqlParamHelper.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="P:MarketActivityAPI.Common.SqlParamHelper.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="T:MarketActivityAPI.Common.SqlParamHelper.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.Common.SqlParamHelper.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignActivityController.FindSignActivity(System.Int32)">
+            <summary>
+            根据活动ID获取活动内容
+            </summary>
+            <param name="activityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignActivityController.AddActivity(System.Object)">
+            <summary>
+            新增线下签到活动
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignActivityController.GetActivityList(System.Object)">
+            <summary>
+            获取线下签到列表
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignActivityController.UpdateActivity(System.Object)">
+            <summary>
+            更改活动
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignInController.SignIn(System.Object)">
+            <summary>
+            签到活动-签到操作
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignInController.GetSignInLog(System.Object)">
+            <summary>
+            签到活动-查看签到列表
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignInController.RemoveSignLog(System.Object)">
+            <summary>
+            删除签到活动数据
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.Controllers.SignInController.CreateCode_Simple(System.Int32)">
+            <summary>
+            生成活动二维码
+            </summary>
+            <param name="activityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.ReceviceMain(System.Web.HttpRequestBase,System.Web.HttpResponseBase)">
+            <summary>
+            微信回调入口
+            </summary>
+            <param name="Request"></param>
+            <param name="Response"></param>       
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.CheckSignature(System.String,System.String,System.String,System.String)">
+            <summary>
+            验证微信签名
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.GetAccessToken">
+            <summary>
+            获取AccessToken
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.GetJsapiTicket">
+            <summary>
+            获取jsapi_ticket
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.GetJsapiTicketSignature(System.String,System.String,System.String)">
+            <summary>
+            获取jsapi_ticket签名
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.Authorize(System.String)">
+            <summary>
+            网页授权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.GetOAuthAccessToken(System.String)">
+            <summary>
+            网页授权根据code获取access_token
+            </summary>
+            <param name="code"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.GetUserInfo(System.String)">
+            <summary>
+            根据access_token和openid获取用户信息
+            </summary>
+            <param name="access_token"></param> string access_token, string openid
+            <param name="openid"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.RequestCreate(System.String)">
+            <summary>
+            get提交获取数据
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.LocalTimeToEpochTimeSeconds(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.BasicApi.LocalTimeToEpochTimeMilliseconds(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.Cryptography.AES_decrypt(System.String,System.String,System.String@)">
+            <summary>
+            解密方法
+            </summary>
+            <param name="Input">密文</param>
+            <param name="EncodingAESKey"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.Cryptography.chr(System.Int32)">
+            将数字转化成ASCII码对应的字符，用于对明文进行补码
+            
+            @param a 需要转化的数字
+            @return 转化得到的字符
+        </member>
+        <member name="F:MarketActivityAPI.WeiXin.EnDeCryptByKey.MyKey">
+            <summary>
+            当前程序加密所使用的密钥
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.EnDeCryptByKey.Encrypt(System.String,System.String)">
+            <summary>
+            加密方法
+            </summary>
+            <param name="pToEncrypt">需要加密字符串</param>
+            <param name="sKey">密钥</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.EnDeCryptByKey.Decrypt(System.String,System.String)">
+            <summary>
+            解密方法
+            </summary>
+            <param name="pToDecrypt">需要解密的字符串</param>
+            <param name="sKey">密匙</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.Models.ErrorManage.GetErrorInfo(System.Int32)">
+            <summary>
+            获取错误信息
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseRecevieText(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收文本消息
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseReceviePic(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收图片
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseRecevieAudio(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收语音
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseRecevieVideo(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收视频
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseRecevieLink(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收链接
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseRecevieRecongnitionAudio(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            被动请求，接收语音Recongnition
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseSubscribeEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            关注事件
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseNoEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            关注无事件
+            </summary>
+            <param name="Response"></param>
+            <param name="msg"></param>
+            <param name="ccg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseUnSubscribeEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            取消关注事件
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseScanSubscribeEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            扫描二维码，用户已关注时，进行关注后的事件推送
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseScanUnSubscribeEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            扫描二维码，用户未关注时，进行关注后的事件推送
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseLocaltonEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            上报地理位置
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseClickEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            自定义菜单
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.ReceiveMsg.ResponseAdvClickEvent(System.Web.HttpResponseBase,MarketActivityAPI.WeiXin.Models.MsgModel,MarketActivityAPI.WeiXin.Models.ResultCryptography)">
+            <summary>
+            扫一扫
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.SendMsg.CreateMenu">
+            <summary>
+            创建菜单
+            </summary>
+            <param name="Response"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.SendMsg.SendMuBanMsg(System.String)">
+            <summary>
+            1注册成功给1发模板消息
+            </summary>
+            <param name="Response"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.SendMsg.CreateSubscribeQRcode(System.Int32)">
+            <summary>
+            创建队员关注二维码
+            </summary>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.SendMsg.PostJson(System.String,System.String)">
+            <summary>
+            post提交json
+            </summary>
+            <param name="url"></param>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetUnSubscribeXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            取消关注事件
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetSubscribeXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            关注事件XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetScanningParametersXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            扫描带参数二维码
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetTextXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复文本消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetImageXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复图片消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetVoiceXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复语音消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetVideoXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复视频消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetMusicXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复音乐消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:MarketActivityAPI.WeiXin.XmlHelpler.GetArticlesXml(MarketActivityAPI.WeiXin.Models.MsgModel)">
+            <summary>
+            回复图文消息XML
+            </summary>
+            <param name="httpRequest"></param>
+            <param name="msg"></param>
+        </member>
+    </members>
+</doc>

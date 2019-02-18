@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76AF275B-BA82-482F-8294-F8B7F123DA0A}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreditSysWeChat</RootNamespace>
+    <AssemblyName>CreditSysWeChat</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=2.3.55.2, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.2\lib\net45\AWSSDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionFilters\AuthorizeFilterAttribute.cs" />
+    <Compile Include="Common\CacheExtend.cs" />
+    <Compile Include="Common\EnumExtend.cs" />
+    <Compile Include="Common\JsonHelper.cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Common\RquestHelper.cs" />
+    <Compile Include="Common\S3Unit.cs" />
+    <Compile Include="Common\SqlHelper2.cs" />
+    <Compile Include="Common\SqlParamHelper.cs" />
+    <Compile Include="Common\StringUtil.cs" />
+    <Compile Include="Common\ValidateCode.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WeChatController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeiXin\BasicApi.cs" />
+    <Compile Include="WeiXin\Cryptography.cs" />
+    <Compile Include="WeiXin\Models\AccessToken.cs" />
+    <Compile Include="WeiXin\Models\ErrorMsg.cs" />
+    <Compile Include="WeiXin\Models\JsapiTicket.cs" />
+    <Compile Include="WeiXin\Models\MsgModel.cs" />
+    <Compile Include="WeiXin\Models\QRcode.cs" />
+    <Compile Include="WeiXin\Models\ResultCryptography.cs" />
+    <Compile Include="WeiXin\Models\UserInfo.cs" />
+    <Compile Include="WeiXin\ReceiveMsg.cs" />
+    <Compile Include="WeiXin\SendMsg.cs" />
+    <Compile Include="WeiXin\WXBizMsgCrypt.cs" />
+    <Compile Include="WeiXin\XmlHelpler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Global.asax" />
+    <Content Include="log.txt" />
+    <Content Include="static\credit\active.png" />
+    <Content Include="static\credit\active_current.png" />
+    <Content Include="static\credit\addphoto.png" />
+    <Content Include="static\credit\address.png" />
+    <Content Include="static\credit\areaicon01.png" />
+    <Content Include="static\credit\areaicon02.png" />
+    <Content Include="static\credit\authen_a.png" />
+    <Content Include="static\credit\authen_b.png" />
+    <Content Include="static\credit\authen_c.png" />
+    <Content Include="static\credit\authen_d.png" />
+    <Content Include="static\credit\authen_e.png" />
+    <Content Include="static\credit\back.png" />
+    <Content Include="static\credit\backcolor.png" />
+    <Content Include="static\credit\background.png" />
+    <Content Include="static\credit\bj.png" />
+    <Content Include="static\credit\bm_btn.png" />
+    <Content Include="static\credit\book1.png" />
+    <Content Include="static\credit\botc.png" />
+    <Content Include="static\credit\botr.png" />
+    <Content Include="static\credit\caricon.png" />
+    <Content Include="static\credit\collect.png" />
+    <Content Include="static\credit\cook.png" />
+    <Content Include="static\credit\cscp_img_title.png" />
+    <Content Include="static\credit\dh.png" />
+    <Content Include="static\credit\dishbtn.png" />
+    <Content Include="static\credit\dishname.png" />
+    <Content Include="static\credit\dishnone.png" />
+    <Content Include="static\credit\dish_select.png" />
+    <Content Include="static\credit\drawbtn.png" />
+    <Content Include="static\credit\draws.png" />
+    <Content Include="static\credit\draws_current.png" />
+    <Content Include="static\credit\dsjs_img_title.png" />
+    <Content Include="static\credit\ds_btn.png" />
+    <Content Include="static\credit\eby.png" />
+    <Content Include="static\credit\ecxp1.png" />
+    <Content Include="static\credit\ecxp2.png" />
+    <Content Include="static\credit\ecxp3.png" />
+    <Content Include="static\credit\ecxp5.png" />
+    <Content Include="static\credit\ecxp_img_title.png" />
+    <Content Include="static\credit\flower.png" />
+    <Content Include="static\credit\goods.jpg" />
+    <Content Include="static\credit\gs_btn.png" />
+    <Content Include="static\credit\hc_btn.png" />
+    <Content Include="static\credit\hd_btn.png" />
+    <Content Include="static\credit\help.png" />
+    <Content Include="static\credit\hotel01.png" />
+    <Content Include="static\credit\hotelback.png" />
+    <Content Include="static\credit\icon_act.png" />
+    <Content Include="static\credit\icon_acts.png" />
+    <Content Include="static\credit\icon_home0.png" />
+    <Content Include="static\credit\icon_menu.png" />
+    <Content Include="static\credit\icon_menus.png" />
+    <Content Include="static\credit\icon_my.png" />
+    <Content Include="static\credit\icon_mys.png" />
+    <Content Include="static\credit\icon_riddle.png" />
+    <Content Include="static\credit\icon_shop.png" />
+    <Content Include="static\credit\icon_shops.png" />
+    <Content Include="static\credit\icon_taste.png" />
+    <Content Include="static\credit\icon_tastes.png" />
+    <Content Include="static\credit\inteback1.png" />
+    <Content Include="static\credit\intebtn.png" />
+    <Content Include="static\credit\inteclose.png" />
+    <Content Include="static\credit\inteicon.png" />
+    <Content Include="static\credit\inteImg.png" />
+    <Content Include="static\credit\intemoney.png" />
+    <Content Include="static\credit\intetk.png" />
+    <Content Include="static\credit\intezp.png" />
+    <Content Include="static\credit\inte_b.png" />
+    <Content Include="static\credit\jf1.png" />
+    <Content Include="static\credit\jf2.png" />
+    <Content Include="static\credit\jf3.png" />
+    <Content Include="static\credit\jf4.png" />
+    <Content Include="static\credit\jfen.png" />
+    <Content Include="static\credit\jia.png" />
+    <Content Include="static\credit\jian.png" />
+    <Content Include="static\credit\jk_btn.png" />
+    <Content Include="static\credit\jt.png" />
+    <Content Include="static\credit\loading.gif" />
+    <Content Include="static\credit\logo.png" />
+    <Content Include="static\credit\love01.png" />
+    <Content Include="static\credit\love02.png" />
+    <Content Include="static\credit\l_jt.png" />
+    <Content Include="static\credit\menu.png" />
+    <Content Include="static\credit\menu_current.png" />
+    <Content Include="static\credit\menu_img01.png" />
+    <Content Include="static\credit\menu_img10.png" />
+    <Content Include="static\credit\menu_img2.png" />
+    <Content Include="static\credit\menu_img3.png" />
+    <Content Include="static\credit\menu_img4.png" />
+    <Content Include="static\credit\menu_img5.png" />
+    <Content Include="static\credit\menu_img6.png" />
+    <Content Include="static\credit\menu_img7.png" />
+    <Content Include="static\credit\menu_img8.png" />
+    <Content Include="static\credit\menu_img9.png" />
+    <Content Include="static\credit\money.png" />
+    <Content Include="static\credit\money_c.png" />
+    <Content Include="static\credit\my.png" />
+    <Content Include="static\credit\my_current.png" />
+    <Content Include="static\credit\notice.png" />
+    <Content Include="static\credit\pagesharebook.jpg" />
+    <Content Include="static\credit\per.png" />
+    <Content Include="static\credit\per1.png" />
+    <Content Include="static\credit\per2.png" />
+    <Content Include="static\credit\per3.png" />
+    <Content Include="static\credit\per4.png" />
+    <Content Include="static\credit\per6.png" />
+    <Content Include="static\credit\per7.png" />
+    <Content Include="static\credit\perback.png" />
+    <Content Include="static\credit\perimg.png" />
+    <Content Include="static\credit\personback.png" />
+    <Content Include="static\credit\prizeimg1.png" />
+    <Content Include="static\credit\prizeimg2.png" />
+    <Content Include="static\credit\prizeimg3.png" />
+    <Content Include="static\credit\prizex.png" />
+    <Content Include="static\credit\productback.png" />
+    <Content Include="static\credit\product_area.png" />
+    <Content Include="static\credit\product_cp.png" />
+    <Content Include="static\credit\product_js.png" />
+    <Content Include="static\credit\product_xgcp.png" />
+    <Content Include="static\credit\pxjl1.png" />
+    <Content Include="static\credit\pxjl_img_title.png" />
+    <Content Include="static\credit\pyq.png" />
+    <Content Include="static\credit\recom.png" />
+    <Content Include="static\credit\recomimg.jpg" />
+    <Content Include="static\credit\recomtop.jpg" />
+    <Content Include="static\credit\recom_text.png" />
+    <Content Include="static\credit\register_bg.png" />
+    <Content Include="static\credit\register_bgnew.png" />
+    <Content Include="static\credit\register_icon.png" />
+    <Content Include="static\credit\rule0.png" />
+    <Content Include="static\credit\rule05.png" />
+    <Content Include="static\credit\rule06.png" />
+    <Content Include="static\credit\rule1.png" />
+    <Content Include="static\credit\rule10.png" />
+    <Content Include="static\credit\rule2.png" />
+    <Content Include="static\credit\rule3.png" />
+    <Content Include="static\credit\rule4.png" />
+    <Content Include="static\credit\rule7.png" />
+    <Content Include="static\credit\rule8.png" />
+    <Content Include="static\credit\rule9.png" />
+    <Content Include="static\credit\rulebanners.png" />
+    <Content Include="static\credit\ruleimg02.png" />
+    <Content Include="static\credit\ruleimg1.png" />
+    <Content Include="static\credit\ruleproImg.png" />
+    <Content Include="static\credit\r_jt.png" />
+    <Content Include="static\credit\scanBack.png" />
+    <Content Include="static\credit\scan_inte.png" />
+    <Content Include="static\credit\scan_title.png" />
+    <Content Include="static\credit\screenImg.png" />
+    <Content Include="static\credit\search.png" />
+    <Content Include="static\credit\select01.png" />
+    <Content Include="static\credit\set_icon.png" />
+    <Content Include="static\credit\shareicon.png" />
+    <Content Include="static\credit\shdz.png" />
+    <Content Include="static\credit\shop.png" />
+    <Content Include="static\credit\shopcar.png" />
+    <Content Include="static\credit\shop_current.png" />
+    <Content Include="static\credit\show.png" />
+    <Content Include="static\credit\sh_btn.png" />
+    <Content Include="static\credit\sign-good.jpg" />
+    <Content Include="static\credit\sign.png" />
+    <Content Include="static\credit\sign_back.png" />
+    <Content Include="static\credit\sign_fail.png" />
+    <Content Include="static\credit\sign_suc.png" />
+    <Content Include="static\credit\success.png" />
+    <Content Include="static\credit\sucful.png" />
+    <Content Include="static\credit\sx.png" />
+    <Content Include="static\credit\sy.png" />
+    <Content Include="static\credit\sy_btn.png" />
+    <Content Include="static\credit\taste.png" />
+    <Content Include="static\credit\tasteclose.png" />
+    <Content Include="static\credit\taste_current.png" />
+    <Content Include="static\credit\taste_text.png" />
+    <Content Include="static\credit\team-bj.png" />
+    <Content Include="static\credit\team-ewm.png" />
+    <Content Include="static\credit\team1.png" />
+    <Content Include="static\credit\team2.png" />
+    <Content Include="static\credit\team3.png" />
+    <Content Include="static\credit\team4.png" />
+    <Content Include="static\credit\team5.png" />
+    <Content Include="static\credit\teamback.png" />
+    <Content Include="static\credit\topc.png" />
+    <Content Include="static\credit\topr.png" />
+    <Content Include="static\credit\tp_btn.png" />
+    <Content Include="static\credit\tutor01.png" />
+    <Content Include="static\credit\tutor02.png" />
+    <Content Include="static\credit\tutor03.png" />
+    <Content Include="static\credit\tutorback.png" />
+    <Content Include="static\credit\twp.png" />
+    <Content Include="static\credit\twp_current.png" />
+    <Content Include="static\credit\vote01.png" />
+    <Content Include="static\credit\vote02.png" />
+    <Content Include="static\credit\wsy.png" />
+    <Content Include="static\credit\wt_btn.png" />
+    <Content Include="static\credit\wy.png" />
+    <Content Include="static\credit\xb_btn.png" />
+    <Content Include="static\credit\xcj_img_title.png" />
+    <Content Include="static\credit\xz.png" />
+    <Content Include="static\credit\zanr.png" />
+    <Content Include="static\credit\zanw.png" />
+    <Content Include="static\credit\zj.png" />
+    <Content Include="static\credit\zp1.png" />
+    <Content Include="static\credit\zp2.png" />
+    <Content Include="static\credit\_EC首页切图_07.png" />
+    <Content Include="static\credit\_EC首页切图_59.png" />
+    <Content Include="static\css\animate.css" />
+    <Content Include="static\css\app.4c869d6fd33a9584df277b6718ad2843.css" />
+    <Content Include="static\css\quill.bubble.css" />
+    <Content Include="static\css\quill.core.css" />
+    <Content Include="static\css\quill.snow.css" />
+    <Content Include="static\favicon.ico" />
+    <Content Include="static\fonts\fontawesome-webfont.674f50d.eot" />
+    <Content Include="static\fonts\fontawesome-webfont.af7ae50.woff2" />
+    <Content Include="static\fonts\fontawesome-webfont.b06871f.ttf" />
+    <Content Include="static\fonts\fontawesome-webfont.fee66e7.woff" />
+    <Content Include="static\img\01.06186f7.jpg" />
+    <Content Include="static\img\authen_d.f533c23.png" />
+    <Content Include="static\img\authen_e.764d885.png" />
+    <Content Include="static\img\dishnone.825e9d9.png" />
+    <Content Include="static\img\drawbtn.b369bc1.png" />
+    <Content Include="static\img\filter_bg.3126d74.jpg" />
+    <Content Include="static\img\flower.8c991de.png" />
+    <Content Include="static\img\fontawesome-webfont.912ec66.svg" />
+    <Content Include="static\img\inteback1.83a85b6.png" />
+    <Content Include="static\img\intebtn.9b807b4.png" />
+    <Content Include="static\img\inteImg.d18e9cd.png" />
+    <Content Include="static\img\intemoney.384668c.png" />
+    <Content Include="static\img\intezp.d3258d5.png" />
+    <Content Include="static\img\logo.73548d8.png" />
+    <Content Include="static\img\l_jt.e3866cc.png" />
+    <Content Include="static\img\pagesharebook.4fb33c7.jpg" />
+    <Content Include="static\img\perback.fe7c1b0.png" />
+    <Content Include="static\img\recomimg.67dd5cf.jpg" />
+    <Content Include="static\img\recomtop.f1a4798.jpg" />
+    <Content Include="static\img\recom_text.c904efc.png" />
+    <Content Include="static\img\register_bg.58d43db.png" />
+    <Content Include="static\img\register_bgnew.9bf2cc5.png" />
+    <Content Include="static\img\register_icon.f0e44ff.png" />
+    <Content Include="static\img\rulebanners.099a7f7.png" />
+    <Content Include="static\img\ruleimg02.36e0370.png" />
+    <Content Include="static\img\ruleimg1.74c0dc5.png" />
+    <Content Include="static\img\ruleproImg.ee66207.png" />
+    <Content Include="static\img\r_jt.edb7f51.png" />
+    <Content Include="static\img\scanBack.ab938bb.png" />
+    <Content Include="static\img\scan_inte.e77ab04.png" />
+    <Content Include="static\img\scan_title.8d67e84.png" />
+    <Content Include="static\img\sign_back.082016e.png" />
+    <Content Include="static\img\sign_fail.6f86295.png" />
+    <Content Include="static\img\sign_suc.c395a89.png" />
+    <Content Include="static\img\sucful.1c5a9bb.png" />
+    <Content Include="static\img\teamback.0bb50d6.png" />
+    <Content Include="static\img\tutorback.8fdb8d0.png" />
+    <Content Include="static\img\zj.56b99bf.png" />
+    <Content Include="static\img\zp1.5f17941.png" />
+    <Content Include="static\js\.project" />
+    <Content Include="static\js\0.d96b9af3253857c71329.js" />
+    <Content Include="static\js\1.e55e71586d3fc4544ef3.js" />
+    <Content Include="static\js\10.3777a0aa595959fe527e.js" />
+    <Content Include="static\js\100.5e696d1c2f5435b9606c.js" />
+    <Content Include="static\js\101.3f0d6d505f314db97ebf.js" />
+    <Content Include="static\js\102.72acebcbfa5016114d47.js" />
+    <Content Include="static\js\103.3f99e608b5ee6c06c755.js" />
+    <Content Include="static\js\104.77a8fda6ab8137ceef30.js" />
+    <Content Include="static\js\105.0e399f58438ce5e2ab8d.js" />
+    <Content Include="static\js\106.40ef8f9c0f10f6cbef11.js" />
+    <Content Include="static\js\107.6efedc172ae88a2c5f64.js" />
+    <Content Include="static\js\108.2f57cc677e1b40cb3d45.js" />
+    <Content Include="static\js\109.edb416bc06deca77145f.js" />
+    <Content Include="static\js\11.4123bf7fe3a57597591c.js" />
+    <Content Include="static\js\110.db2b2f12ef743235c12a.js" />
+    <Content Include="static\js\111.d1eb1c9adc5910410ba1.js" />
+    <Content Include="static\js\112.402b90cba036e92a7ef3.js" />
+    <Content Include="static\js\113.b416704fe201df3d476a.js" />
+    <Content Include="static\js\114.d6b2a0722025b2b624f2.js" />
+    <Content Include="static\js\115.14b6b053415ae28aa90b.js" />
+    <Content Include="static\js\116.681e073497e079134436.js" />
+    <Content Include="static\js\117.c13633eb941786a1fa63.js" />
+    <Content Include="static\js\118.a9d71638787665d74716.js" />
+    <Content Include="static\js\119.9f44258d1346fe4a883e.js" />
+    <Content Include="static\js\12.2b4b8867058ffc63a6fa.js" />
+    <Content Include="static\js\120.9071cbd723bce167bcf1.js" />
+    <Content Include="static\js\121.517dbcd60c3e6317a274.js" />
+    <Content Include="static\js\122.fc557e553dab103625a1.js" />
+    <Content Include="static\js\123.99ee1fc49e41d4658dee.js" />
+    <Content Include="static\js\124.3655580f62aa01aa56f1.js" />
+    <Content Include="static\js\125.4f75265d82713f86c240.js" />
+    <Content Include="static\js\126.a97d707a1e305d058051.js" />
+    <Content Include="static\js\127.c306cfddee843af4ee7b.js" />
+    <Content Include="static\js\128.d2e1630a1d88237649fa.js" />
+    <Content Include="static\js\129.f7cadf5e957ef0f62948.js" />
+    <Content Include="static\js\13.7ae9e3cdeb1fad216af3.js" />
+    <Content Include="static\js\130.fc7f97a76a37e9e5c73d.js" />
+    <Content Include="static\js\131.cf8b86690c5edcef823f.js" />
+    <Content Include="static\js\132.95e37b809fe5618d9a6e.js" />
+    <Content Include="static\js\133.59a6f0ec6fa09bdca960.js" />
+    <Content Include="static\js\134.52443d24ca239f5ca701.js" />
+    <Content Include="static\js\135.663a7e36916074200535.js" />
+    <Content Include="static\js\136.7f88501d690f163378ef.js" />
+    <Content Include="static\js\137.7ae56fae31add613832e.js" />
+    <Content Include="static\js\138.db59b55f8c711f997dc5.js" />
+    <Content Include="static\js\139.052cab37e563acae3979.js" />
+    <Content Include="static\js\14.abeaf10cc22cfcf224e8.js" />
+    <Content Include="static\js\140.05f4c13fc12871de3c13.js" />
+    <Content Include="static\js\141.3e0fada93bfde9a58537.js" />
+    <Content Include="static\js\142.efde05e4f1f7d970978a.js" />
+    <Content Include="static\js\143.92ddd0842645e5be6418.js" />
+    <Content Include="static\js\144.9b55917afad2f1c8159f.js" />
+    <Content Include="static\js\145.2d46026b387723f2c889.js" />
+    <Content Include="static\js\146.a9c62e158e7c6e9a244e.js" />
+    <Content Include="static\js\147.e2bcc5cb9da237a4cf48.js" />
+    <Content Include="static\js\148.12996c474aa6556f5c19.js" />
+    <Content Include="static\js\149.1c7a3a9904823c94d4a7.js" />
+    <Content Include="static\js\15.c80b082c3e12af3fd2e8.js" />
+    <Content Include="static\js\150.9d7080d701238d3ae2bc.js" />
+    <Content Include="static\js\151.cc46d73a339e2d8eb8ab.js" />
+    <Content Include="static\js\152.499e7d7bcc69b9f1fa6c.js" />
+    <Content Include="static\js\153.ee8b3c116ec29e527e77.js" />
+    <Content Include="static\js\154.45879af987eefcc06d20.js" />
+    <Content Include="static\js\155.58ccc46e36f8a3d017df.js" />
+    <Content Include="static\js\156.777da5e9d9b2dc2b8830.js" />
+    <Content Include="static\js\157.a74e1d26f3ceda33fc65.js" />
+    <Content Include="static\js\158.cfae2ab3c02b4aa4f008.js" />
+    <Content Include="static\js\159.aa1871d38508e238cc05.js" />
+    <Content Include="static\js\16.54790206f43c7a6322bf.js" />
+    <Content Include="static\js\160.350d4a2af8710a2949ea.js" />
+    <Content Include="static\js\161.1a164eb2944bfed0ecbc.js" />
+    <Content Include="static\js\162.6dba76ad6052a89f086c.js" />
+    <Content Include="static\js\163.50e6be5aa8a42a1fda72.js" />
+    <Content Include="static\js\164.3737b870cd58fd428d4f.js" />
+    <Content Include="static\js\165.a71fc6db7a6d81f99a27.js" />
+    <Content Include="static\js\166.f196310cecae1c630c4a.js" />
+    <Content Include="static\js\167.3131b27fe5ab2bd765be.js" />
+    <Content Include="static\js\168.452d54995c29023197aa.js" />
+    <Content Include="static\js\169.87b42b09e6813c72c00c.js" />
+    <Content Include="static\js\17.3ade0ac5899fcc1421de.js" />
+    <Content Include="static\js\170.ccd62f70632f536cf535.js" />
+    <Content Include="static\js\171.204554f064d8406b97df.js" />
+    <Content Include="static\js\172.834130d382d5a829b160.js" />
+    <Content Include="static\js\173.05d59b7675a13c3e40e3.js" />
+    <Content Include="static\js\174.45d2b53f372db3de2422.js" />
+    <Content Include="static\js\175.6dd5267131a8479fe872.js" />
+    <Content Include="static\js\176.f78a7b4a5b152f20def6.js" />
+    <Content Include="static\js\177.472a4df3847d2a0ba53e.js" />
+    <Content Include="static\js\178.7aed01220199e439bfbb.js" />
+    <Content Include="static\js\179.3fbd640274a6fd1bfb84.js" />
+    <Content Include="static\js\18.a7ef30ad8d4cee57ff96.js" />
+    <Content Include="static\js\180.a938a3c9a05b4955e095.js" />
+    <Content Include="static\js\181.d4890abfae1c754da52c.js" />
+    <Content Include="static\js\182.88e4e6e4c62d88227452.js" />
+    <Content Include="static\js\183.6da1bee2e83a2293d30c.js" />
+    <Content Include="static\js\184.6dfc9e4602df75c5d87a.js" />
+    <Content Include="static\js\185.5fc2e183b4c05b06b710.js" />
+    <Content Include="static\js\186.03ad4933b6668719d713.js" />
+    <Content Include="static\js\187.f0ed3b108cafd5ac4a1b.js" />
+    <Content Include="static\js\188.1859bd96595e4b8db96b.js" />
+    <Content Include="static\js\189.e86a0a7fb4f7801fd914.js" />
+    <Content Include="static\js\19.404d27197fb216af9a4c.js" />
+    <Content Include="static\js\190.4e7071dc013b0bbed4c8.js" />
+    <Content Include="static\js\191.f997d5470e3ef13b846b.js" />
+    <Content Include="static\js\192.eb958e10aa294fa902eb.js" />
+    <Content Include="static\js\193.eb8925582d77845cf924.js" />
+    <Content Include="static\js\194.815e554abec350ceeaff.js" />
+    <Content Include="static\js\195.7d900edf16716631d98a.js" />
+    <Content Include="static\js\196.88a125a26d4978f64444.js" />
+    <Content Include="static\js\197.3283dae8c43ed8aafb0a.js" />
+    <Content Include="static\js\2.45b9121ba3e945c38ca4.js" />
+    <Content Include="static\js\20.fd8ac71635c2e777030b.js" />
+    <Content Include="static\js\21.198451f8b52896d95c07.js" />
+    <Content Include="static\js\22.ca74b9ca4e0584c0bf35.js" />
+    <Content Include="static\js\23.16be9849bb8b7e48b0ba.js" />
+    <Content Include="static\js\24.43b5e30af2c4e730ef0a.js" />
+    <Content Include="static\js\25.8ceae7ba80ff35a99530.js" />
+    <Content Include="static\js\26.f2adafc9c2beda13aef1.js" />
+    <Content Include="static\js\27.8594d5440fdca4f064b2.js" />
+    <Content Include="static\js\28.01ef81f1c086c2af611c.js" />
+    <Content Include="static\js\29.bea55a8c7b2989321259.js" />
+    <Content Include="static\js\3.8a73f1e150b3c84acf70.js" />
+    <Content Include="static\js\30.101e691ca64182e89ef2.js" />
+    <Content Include="static\js\31.c2d3b54aa06f94c5c01c.js" />
+    <Content Include="static\js\32.ec9606f0ee0e771676e5.js" />
+    <Content Include="static\js\33.a3d0de46f39b6d1dca9d.js" />
+    <Content Include="static\js\34.ff79ea453844145bc8ea.js" />
+    <Content Include="static\js\35.d641a116c44a7e932fd2.js" />
+    <Content Include="static\js\36.8a51b38428776f5378d8.js" />
+    <Content Include="static\js\37.fef7f951ce4e890b8f41.js" />
+    <Content Include="static\js\38.296e26cbfacbb888e876.js" />
+    <Content Include="static\js\39.fcaadfc2020fb3cebe1c.js" />
+    <Content Include="static\js\4.9525ef37df6cbfc5fd9a.js" />
+    <Content Include="static\js\40.d99aa3f104982f53192d.js" />
+    <Content Include="static\js\41.810b2469729d4566d67b.js" />
+    <Content Include="static\js\42.9fbcd19c9966cc9a6751.js" />
+    <Content Include="static\js\43.1a9a72cf1e85973e7cae.js" />
+    <Content Include="static\js\44.4223ca2bdcf4212205da.js" />
+    <Content Include="static\js\45.7df23547499e57fafc36.js" />
+    <Content Include="static\js\46.f03a3a3d32fe69d9b5e0.js" />
+    <Content Include="static\js\47.e1af82401dc4b2eb5193.js" />
+    <Content Include="static\js\48.485d76e5c8c5bf116221.js" />
+    <Content Include="static\js\49.034d4eb25a59eae5ed9d.js" />
+    <Content Include="static\js\5.83703e06170239b9d307.js" />
+    <Content Include="static\js\50.17edcecb6b00a74b4ede.js" />
+    <Content Include="static\js\51.77e8b2b09aeb97c6b3ef.js" />
+    <Content Include="static\js\52.44e901914f4ba0979a41.js" />
+    <Content Include="static\js\53.77ad58a1a30a8d4ea5c3.js" />
+    <Content Include="static\js\54.4ec495fb11c66db35bdd.js" />
+    <Content Include="static\js\55.cf22b4b153fab697e753.js" />
+    <Content Include="static\js\56.22508ce00314cedcdc56.js" />
+    <Content Include="static\js\57.e92161edf144b9b59c8a.js" />
+    <Content Include="static\js\58.6d6a4fa5bbc5f125f9f9.js" />
+    <Content Include="static\js\59.c8874e3d6cec4b035a11.js" />
+    <Content Include="static\js\6.68fc110331016f4c2281.js" />
+    <Content Include="static\js\60.7674e19f6d7d1c4bdce8.js" />
+    <Content Include="static\js\61.a35a480ec0c84dbdc728.js" />
+    <Content Include="static\js\62.fe0eb8017974817862d0.js" />
+    <Content Include="static\js\63.0d4097d7c08177bfcc7e.js" />
+    <Content Include="static\js\64.2813b6febe813edd0f86.js" />
+    <Content Include="static\js\65.f46f4833d8504ba450ac.js" />
+    <Content Include="static\js\66.78dac4c098223f7a0e81.js" />
+    <Content Include="static\js\67.9597874b28106f47beb8.js" />
+    <Content Include="static\js\68.f0c7d851f8c0705c05fe.js" />
+    <Content Include="static\js\69.69088921f88a6174c191.js" />
+    <Content Include="static\js\7.6cdb162e80cfd0baf86d.js" />
+    <Content Include="static\js\70.2cac6485bb97c91bf7d8.js" />
+    <Content Include="static\js\71.f874f5d1a44d8f57ca72.js" />
+    <Content Include="static\js\72.2b95a7ef89ee1d072f7b.js" />
+    <Content Include="static\js\73.43651019f3f19118f020.js" />
+    <Content Include="static\js\74.f05fba37c090b4b9631e.js" />
+    <Content Include="static\js\75.d95dcc7257c18a8f91fd.js" />
+    <Content Include="static\js\76.b3c3a858fdecdcbe20d8.js" />
+    <Content Include="static\js\77.1aa49e18411063d52735.js" />
+    <Content Include="static\js\78.8152aa54fc8d52ca6f5f.js" />
+    <Content Include="static\js\79.016bf800153f70c80247.js" />
+    <Content Include="static\js\8.edbc68ab1dbaf52b097f.js" />
+    <Content Include="static\js\80.aae70b74b42b5849cdb2.js" />
+    <Content Include="static\js\81.2de59fbdf7ec670b5e6e.js" />
+    <Content Include="static\js\82.9ca652b5cd45b38a1d72.js" />
+    <Content Include="static\js\83.01cd769721df5cdfa21a.js" />
+    <Content Include="static\js\84.eeb5da8c8766d54de1fc.js" />
+    <Content Include="static\js\85.055de1b13d1d2cfe2f8a.js" />
+    <Content Include="static\js\86.93cb6e97c0ea6407ccff.js" />
+    <Content Include="static\js\87.27b6d323fc2bf214a5cf.js" />
+    <Content Include="static\js\88.2fedf708ed2999f4a07e.js" />
+    <Content Include="static\js\89.ea5d540d215c637d69bc.js" />
+    <Content Include="static\js\9.9a5af160de4f592c633d.js" />
+    <Content Include="static\js\90.796acfc3f7f4a0a621ee.js" />
+    <Content Include="static\js\91.3ebb05407b152ecf66df.js" />
+    <Content Include="static\js\92.20ce7ba9c9d9dff97ebe.js" />
+    <Content Include="static\js\93.db45dfc77672c46d69f4.js" />
+    <Content Include="static\js\94.91bae2ddbaea51238022.js" />
+    <Content Include="static\js\95.5f548386ab4b35c1da03.js" />
+    <Content Include="static\js\96.9b70eb05fbbca12d012a.js" />
+    <Content Include="static\js\97.b416a963e91d3836690b.js" />
+    <Content Include="static\js\98.ffcc0cab473168493cb9.js" />
+    <Content Include="static\js\99.8ee89a732a9478f734cd.js" />
+    <Content Include="static\js\app.5f496c4b25ad0d611df8.js" />
+    <Content Include="static\js\bus.js" />
+    <Content Include="static\js\jweixin-1.0.0.js" />
+    <Content Include="static\js\manifest.b185f824296a2f4300d9.js" />
+    <Content Include="static\js\vendor.964a720cb1c5678946bf.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\WeChat.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5582</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5582/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

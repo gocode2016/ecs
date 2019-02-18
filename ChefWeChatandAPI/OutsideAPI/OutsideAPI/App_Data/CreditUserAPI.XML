@@ -1,0 +1,789 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CreditUserAPI</name>
+    </assembly>
+    <members>
+        <member name="M:OutsideAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,OutsideAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,OutsideAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:OutsideAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},OutsideAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:OutsideAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(OutsideAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:OutsideAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,OutsideAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:OutsideAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:OutsideAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OutsideAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OutsideAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:OutsideAPI.Common.JsonHelper.ObjectToJson(System.Object)">
+            <summary>
+            对象序列化成json
+            </summary>
+            <param name="toJsonValue">要转化成Json的对象</param>
+            <returns>返回序列化后的字符串</returns>
+        </member>
+        <member name="M:OutsideAPI.Common.JsonHelper.JsonToObject``1(System.String)">
+            <summary>
+            json反序列化成对象
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="M:OutsideAPI.Common.JsonHelper.JsonToList``1(System.String)">
+            <summary>
+            json反序列化成list
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+            <param name="json">反序列化字符串</param>
+            <returns>返回反序列化后的实体T</returns>
+        </member>
+        <member name="M:OutsideAPI.Common.LogHelper.WriteLog(System.String,System.String)">
+            <summary>
+            写日志(用于跟踪)
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Common.SqlHelper.GetCount(System.Data.CommandType,System.String)">
+            <summary>
+            返回数量
+            </summary>
+            <param name="commandType"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OutsideAPI.Controllers.ActivityController">
+            <summary>
+            第三方活动数据通过接口进入系统
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Controllers.ActivityController.GetRegion">
+            <summary>
+            获取所有省市区及城市级别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OutsideAPI.Controllers.ActivityController.HandleActivityDataToEcs">
+            <summary>
+            循环中间表数据创建到ecs会员 订单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OutsideAPI.Controllers.ActivityController.HandleAction(OutsideAPI.Models.ActivityData)">
+            <summary>
+            具体数据处理动作 将数据转为会员信息、订单信息
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OutsideAPI.Controllers.ActivityController.AddJifenFromActivity(System.Int32)">
+            <summary>
+            增加第三方抽奖所得20积分
+            </summary>
+            <param name="memberid">会员id</param>
+            <returns></returns>
+        </member>
+        <member name="M:OutsideAPI.Controllers.ActivityController.CreateUserTemp">
+            <summary>
+            20180913餐饮积分系统用第三方举行抽奖活动，第三方将数据给我们，将用户创建到餐饮积分
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:OutsideAPI.Controllers.HomeController">
+            <summary>
+            主页
+            </summary>
+        </member>
+        <member name="M:OutsideAPI.Controllers.HomeController.Index">
+            <summary>
+            主页
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.OpenId">
+            <summary>
+            微信openid
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.Phone">
+            <summary>
+            手机
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.PositionType">
+            <summary>
+            岗位类型
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.Position">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.HotelOrMdName">
+            <summary>
+            酒店或者门店名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.Address">
+            <summary>
+            酒店或者门店地址
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.NickName">
+            <summary>
+            微信昵称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.HeadImageUrl">
+            <summary>
+            微信头像url
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.PrizeName">
+            <summary>
+            第三方抽奖所得奖品 如六月鲜200ml
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.ProvinceId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.ProvinceName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.CityId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.CityName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.AreaId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.AreaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.ActivityData.AddDate">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Models.MemberIntegralDetail">
+            <summary>
+            会员积分明细
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.MemberId">
+            <summary>
+            会员id
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.IntegralNum">
+            <summary>
+            积分数量
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.CreatDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.IntegralType">
+            <summary>
+            操作类别 1为增加 2为减
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.IntegralSource">
+            <summary>
+            操作来源
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.Remark">
+            <summary>
+            操作备注
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.ScanMemberCode">
+            <summary>
+            扫码酒店编码
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.MemberIntegralDetail.ScanHotelName">
+            <summary>
+            扫码酒店名称
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Models.OpenIdAssociated">
+            <summary>
+            微信OpenID表
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.OpenId">
+            <summary>
+            微信唯一ID  OPENID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.Nickname">
+            <summary>
+            微信昵称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.HeadImgUrl">
+            <summary>
+            微信头像
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.UserId">
+            <summary>
+            会员ID / 队员ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.UserType">
+            <summary>
+            用户类别1为队员 2位会员
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.OpenIdAssociated.CreateDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:OutsideAPI.Models.RegistMember">
+            <summary>
+            会员表
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.ProvinceId">
+            <summary>
+            酒店-省ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.ProvinceName">
+            <summary>
+            酒店-省名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.CityId">
+            <summary>
+            酒店-市ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.CityName">
+            <summary>
+            酒店-市名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.AreaId">
+            <summary>
+            酒店-区ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.AreaName">
+            <summary>
+            酒店-区名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.ImgUrl">
+            <summary>
+            会员头像
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.HotelAddress">
+            <summary>
+            酒店地址
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberName">
+            <summary>
+            会员名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberTelePhone">
+            <summary>
+            会员电话
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.HotelName">
+            <summary>
+            酒店名称
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.HotelCode">
+            <summary>
+            酒店编码
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.Position">
+            <summary>
+            具体职业
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.PositionType">
+            <summary>
+            职业类型
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.RecommendId">
+            <summary>
+            所属队员ID 若为99则为实名认证注册
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.UpdateId">
+            <summary>
+            修改信息者ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.RegistDate">
+            <summary>
+            注册时间
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.UpdateDate">
+            <summary>
+            更新资料时间
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberState">
+            <summary>
+            会员状态
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.TotalIntegral">
+            <summary>
+            会员总积分
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.LeaveIntegral">
+            <summary>
+            会员剩余积分
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.Remark">
+            <summary>
+            备注 及注册来源
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberCode">
+            <summary>
+            客户编码
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberCodeTime">
+            <summary>
+            完善客户编码时间
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.RoleId">
+            <summary>
+            角色ID 已不用
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.MemberRecId">
+            <summary>
+            推荐人ID
+            </summary>
+        </member>
+        <member name="P:OutsideAPI.Models.RegistMember.IsEnable">
+            <summary>
+            是否启禁用
+            </summary>
+        </member>
+    </members>
+</doc>

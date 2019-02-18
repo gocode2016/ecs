@@ -1,0 +1,1715 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IntegralMallAPI</name>
+    </assembly>
+    <members>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,IntegralMallAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,IntegralMallAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:IntegralMallAPI.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},IntegralMallAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(IntegralMallAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,IntegralMallAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:IntegralMallAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IntegralMallAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IntegralMallAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.kuaidi100.GetInfo(System.String,System.String)">
+            <summary>
+            获取快递信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.kuaidi100.GetHtml(System.String,System.String)">
+            <summary>
+            获取页面源代码
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.kuaidi100.HtmlSubstring(System.String)">
+            <summary>
+            正则截取字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.LogHelper.WriteLog(System.String,System.String)">
+            <summary>
+            写日志(用于跟踪)
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.topup(System.String,System.String,System.String)">
+            <summary>
+            自定义充值入口
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="cardnum">充值金额</param>
+            <param name="requestid">商户订单号</param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.Sinopec(System.String,System.String,System.String,System.String)">
+            <summary>
+            加油卡充值
+            </summary>
+            <param name="cardNo">油卡号</param>
+            <param name="cardTel">油卡联系方式</param>
+            <param name="cardNum">金额</param>
+            <param name="sporder_id">商户订单号</param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.TakeCard(System.String,System.String,System.String,System.String)">
+            <summary>
+            卡密提取
+            </summary>
+            <param name="cardId">所需提货商品的编码(需和CP商品编码一一对应)</param>
+            <param name="cardNum">所需提货商品的数量（1-10张）,cardnum不填默认为1</param>
+            <param name="phone">收货手机号</param>
+            <param name="spOrderId">Sp商家的订单号</param>
+            <returns>卡号,密码,有效期</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.MyRequest(System.String)">
+            <summary>
+            调用API
+            </summary>
+            <param name="url"></param>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.MD5(System.String)">
+            <summary>
+             获取MD5签名结果
+            </summary>
+            <param name="encypStr"></param>
+            <param name="charset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.MD5Upper(System.String)">
+            <summary>
+            获取大写的MD5
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.MD5Lower(System.String)">
+            <summary>
+            获取小写的MD5
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.OfpayInterface.BytesToHexString(System.Byte[],IntegralMallAPI.Common.ofpay.LowerOrUpper)">
+            <summary>
+            大小写转换
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.ofpay.XmlHelpler.GetRetCode(System.String)">
+            <summary>
+            获取返回的XML结果
+            </summary>
+            <param name="uri"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.TopupFactory.topup(IntegralMallAPI.Common.TopupModel)">
+            <summary>
+            充值入口
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.TopupFactory.topupOfpay(IntegralMallAPI.Common.TopupModel)">
+            <summary>
+            欧飞充值
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.TopupFactory.Sinopec(IntegralMallAPI.Common.TopupModel)">
+            <summary>
+            油卡充值
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.TopupFactory.TakeCard(IntegralMallAPI.Common.TopupModel)">
+            <summary>
+            提取卡密
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Common.TopupModel">
+            <summary>
+            充值实体
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.OrderId">
+            <summary>
+            订单号
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.Account">
+            <summary>
+            充值账户，如手机号，电话号
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.CardTel">
+            <summary>
+            卡的联系方式
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.CardNum">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.Value">
+            <summary>
+            面值
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.ExtendInfo">
+            <summary>
+            其他扩展信息
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.PaymentType">
+            <summary>
+            支付接口类型
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.TopupModel.CardCode">
+            <summary>
+            根据卡类型和面额返回编码
+            </summary>
+            <returns>礼品卡的编码</returns>
+        </member>
+        <member name="T:IntegralMallAPI.Common.SqlHelper">
+            <summary>
+            SqlHelper数据层
+            </summary>
+        </member>
+        <member name="F:IntegralMallAPI.Common.SqlHelper.connection">
+            <summary>
+            数据库连接对象
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.#ctor">
+            <summary>
+            初始化连接对象
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将SqlParameters插入至SqlParameter.
+            </summary>
+            <param name="command">需要添加SqlParameters的Command</param>
+            <param name="commandParameters">被添加到Command的SqlParameters数组</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            将DataRow列的值插入到SqlParameters数组中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="dataRow">DataTable数据行</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            将数组中的值复制到SqlParameters中
+            </summary>
+            <param name="commandParameters">SqlParameters数组</param>
+            <param name="parameterValues">对象数组</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            根据Connection, Transaction, CommandType and Parameters得到指定的Command
+            </summary>
+            <param name="command">指定的SqlParameter</param>
+            <param name="transaction">有效的SqlTransaction, 或 'null'</param>
+            <param name="commandType">CommandType类型(stored procedure, text, etc.)</param>
+            <param name="commandText">The Stored procedure Name or T-SQL command</param>
+            <param name="commandParameters">SqlParameters数组 或 'null'</param>
+            <param name="mustCloseConnection"><c>true</c></param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand. 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            使用提供的参数执行SqlCommand,带参数 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">SqlParamters数组</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不提供SqlParameter . 
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "PublishOrders",transaction);
+            </remarks>        
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,提供SqlParameter
+            </summary>
+            <remarks>
+             int result = ExecuteNonQuery(CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24),trans);
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回影响的行数</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataSet(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String)">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,不提供参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            通过提供SqlConnection执行SqlCommand,提供参数. 
+            </summary>
+            <remarks>
+             DataTable dt = ExecuteDataTable(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>DataTable内存表</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,不带参数. 
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteDataTable(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            通过提供SqlTransaction执行SqlCommand,带参数.
+            </summary>
+            <remarks>
+             DataTable ds = ExecuteDataTable(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction,IntegralMallAPI.Common.SqlHelper.SqlConnectionOwnership)">
+            <summary>
+            调用ExecuteReader,通过提供CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParameters or 'null'</param>
+            <param name="transaction">一个有效的SqlTransaction, or 'null'</param>
+            <param name="connectionOwnership">标识连接对象是由caller提供还是由SqlHelper提供</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String)">
+            <summary>
+            调用ExecuteReader,不带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            调用ExecuteReader,带参数,此时属于外部调用者
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,无参数,属于外部调用 
+            </summary>
+            <remarks>
+             SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteReader(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand通过提供SqlTransactio,带参数,属于外部调用
+            </summary>
+            <remarks>
+              SqlDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数SqlParamters</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>SqlDataReader结果集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            执行SqlCommand
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行SqlCommand 
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">对象数组，将该值导入相应的参数中</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            执行SqlCommand  
+            </summary>
+            <remarks>
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+            <returns>返回1x1结果</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>    
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>   
+            <param name="commandParameters">参数数组</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射 
+            </summary>
+            <remarks>
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.FillDataSet(System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            利用TableMappings给DataSet绑定多个表，并给DataSet做相应的表名影射(私有方法)
+            </summary>
+            <remarks>
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="dataSet">拥有多个结果集的Dataset</param>
+            <param name="tableNames">需要影射的表名</param>
+            <param name="commandParameters">参数数组</param>
+            <param name="transaction">一个有效的SqlTransaction</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.ExecutePageDataSet(System.Data.CommandType,System.String,System.Int32,System.Int32,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            查询出指定页数的数据，返回DataSet
+            </summary>
+            <param name="commandType">CommandType类型 (stored procedure, text, etc.)</param>
+            <param name="commandText">存储过程名称或T-SQL语句</param>
+            <param name="pageSize">每页数量</param>
+            <param name="currentPageIndex">当前页</param>
+            <param name="commandParameters">参数SqlParameter</param>
+            <returns>DataSet数据集</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.Dispose(System.Boolean)">
+            <summary>
+            如果连接未关闭，则关闭连接  
+            </summary>
+            /// <param name="disposing">判断参数</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlHelper.Dispose">
+            <summary>
+            重写Dispose  
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.SqlHelper.GetConnection">
+            <summary>
+            得到数据库连接
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Common.SqlHelper.SqlConnectionOwnership">
+            <summary>
+            枚举表示该连接不论是调用者还是SqlHelper,当执行ExecuteReader()时需要用CommandBehavior
+            </summary>
+        </member>
+        <member name="F:IntegralMallAPI.Common.SqlHelper.SqlConnectionOwnership.Internal">
+            <summary>连接由SqlHelper管理和使用</summary>
+        </member>
+        <member name="F:IntegralMallAPI.Common.SqlHelper.SqlConnectionOwnership.External">
+            <summary>连接由调用者管理和使用</summary>
+        </member>
+        <member name="T:IntegralMallAPI.Common.SqlParamHelper">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.Append(IntegralMallAPI.Common.SqlParamHelper)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <!-- 对于成员“M:IntegralMallAPI.Common.SqlParamHelper.Select(System.Object[])”忽略有格式错误的 XML 注释 -->
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="P:IntegralMallAPI.Common.SqlParamHelper.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.SqlParamHelper.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Common.SqlParamHelper.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Common.SqlParamHelper.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Common.SqlParamHelper.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.CartController.AddCart(System.Object)">
+            <summary>
+            新增购物车
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.CartController.UpdateCart(System.Object)">
+            <summary>
+            修改购物车
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.CartController.DeleteCart(System.Int32[])">
+            <summary>
+            删除购物车
+            </summary>
+            <param name="cartId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.CartController.GetCartList(System.Int32)">
+            <summary>
+            获取用户购物车列表
+            </summary>
+            <param name="memberId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IntegralMallAPI.Controllers.CategoryController">
+            <summary>
+            类目部分API
+            </summary>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.CategoryController.GetCategory">
+            <summary>
+            获得所有类目
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.NormsController.AddNorms(System.Object)">
+            <summary>
+            新增商品规格
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.NormsController.UpdateNorms(System.Object)">
+            <summary>
+            更改商品规格
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.NormsController.GetProductNorms(System.Int32)">
+            <summary>
+            微信用
+            获取商品规格信息
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.NormsController.GetSysProductNorms(System.Int32)">
+            <summary>
+            后台用
+            获取商品规格信息
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.CreateOrderFromTemp">
+            <summary>
+             20180913餐饮积分系统用第三方举行抽奖活动，第三方将数据给我们，讲抽奖所得的物品转为商城订单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.AddOrder(System.Object)">
+            <summary>
+            新增订单
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.UpdateOrderState(System.Object)">
+            <summary>
+            更改订单状态
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.LuckyOrderSubmit(System.Object)">
+            <summary>
+            积分抽奖回写订单
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.HomeLuckyOrderSubmit(System.Object)">
+            <summary>
+            家味修改订单
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.CallBack(System.Object)">
+            <summary>
+            取消订单回滚函数
+            </summary>
+            <param name="requestData"></param>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetMemberOrderList(System.Int32)">
+            <summary>
+            微信端获取订单列表
+            </summary>
+            <param name="memberId">会员ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetOrderList(System.Object)">
+            <summary>
+            获取订单列表页
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetIntegrakDrawList">
+            <summary>
+            积分抽奖滚动展示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetOrderInfo(System.Int32)">
+            <summary>
+            获取订单详情
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.SendLogistics(System.Object)">
+            <summary>
+            订单发货
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetOrderSKU(System.Int32)">
+            <summary>
+            获取订单SKU
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.InventedManage(System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            虚拟接口操作方法
+            </summary>
+            <param name="invented">接口类型</param>
+            <param name="telephone">手机号</param>
+            <param name="orderId">订单ID</param>
+            <param name="price">价格</param>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.UpdateRemark(System.Object)">
+            <summary>
+            修改订单备注
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.GetLogisticsInfo(System.String,System.String)">
+            <summary>
+            获取订单物流信息
+            </summary>
+            <param name="code">物流类型</param>
+            <param name="postId">物流编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.ImprotLogistics(System.Object)">
+            <summary>
+            导入物流信息
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.CheckMemberSale(System.Object)">
+            <summary>
+            验证会员活动期间够买次数
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.OrderController.PrintOrderList(System.Object)">
+            <summary>
+            导出订单接口
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.AddProduct(System.Object)">
+            <summary>
+            新增商品
+            </summary>
+            <param name="requestData"></param>
+            <returns>返回执行行数</returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.GetProductList(System.Object)">
+            <summary>
+            获取商品列表
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.GetWeChatProductList(System.Object)">
+            <summary>
+            获取商品列表
+            微信端使用
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.UpdateProduct(System.Object)">
+            <summary>
+            修改商品
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.RemoveProduct(System.Int32)">
+            <summary>
+            删除商品
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.ProductController.GetProductById(System.Int32)">
+            <summary>
+            获取商品详细信息
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SaleActivityController.AddSaleActivity(System.Object)">
+            <summary>
+            新增SKU折扣活动
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SaleActivityController.FindSkuSale(System.Int32)">
+            <summary>
+            根据sku获取活动信息
+            </summary>
+            <param name="skuId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SaleActivityController.UpdateSkuSale(System.Object)">
+            <summary>
+            修改SKU折扣活动
+            </summary>k
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SKUController.AddSKU(System.Object)">
+            <summary>
+            新增SKU
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SKUController.UpdateSKU(System.Object)">
+            <summary>
+            修改SKU
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SKUController.GetSKUList(System.Object)">
+            <summary>
+            SKU列表
+            </summary>
+            <param name="requestData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SKUController.GetSkuByNorms(System.Int32)">
+            <summary>
+            根据规格获取SKU
+            </summary>
+            <param name="normsId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IntegralMallAPI.Controllers.SKUController.IsShowSKU(System.Int32,System.Int32[])">
+            <summary>
+            批量上下架
+            </summary>
+            <param name="excType">操作项</param>
+            <param name="skuList">SkuId数组</param>
+            <returns></returns>
+        </member>
+        <member name="T:IntegralMallAPI.Models.Cart">
+            <summary>
+            购物车
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.MemberId">
+            <summary>
+            会员ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.SkuId">
+            <summary>
+            SKUID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.ProductId">
+            <summary>
+            商品ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.SkuName">
+            <summary>
+            sku名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Cart.Price">
+            <summary>
+            价格 此处价格为SKU+Count的价格
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.Category">
+            <summary>
+            商城类目
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Category.CategoryId">
+            <summary>
+            类目ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Category.CategoryName">
+            <summary>
+            类目名称
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.Norms">
+            <summary>
+            商品规格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.NormsId">
+            <summary>
+            规格ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.ProductId">
+            <summary>
+            商品id
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.ProductName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.TypeName">
+            <summary>
+            规格名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.TypeValue">
+            <summary>
+            规格值
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Norms.IsEnable">
+            <summary>
+            是否启禁用
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.MemberOrder">
+            <summary>
+            会员订单
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.MemberId">
+            <summary>
+            会员ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderAddress">
+            <summary>
+            订单地址
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderName">
+            <summary>
+            下单人员名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderTelephone">
+            <summary>
+            订单电话
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderState">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderPrice">
+            <summary>
+            订单价格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderType">
+            <summary>
+            订单类型1为实物  2为虚拟
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.InventedType">
+            <summary>
+            虚拟接口类型 1为欧飞充值
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.LogisticsNo">
+            <summary>
+            物流单号
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.LogisticsType">
+            <summary>
+            物流公司类别
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderFrom">
+            <summary>
+            订单来源
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.OrderRemark">
+            <summary>
+            订单备注
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.MemberOrder.AddDate">
+            <summary>
+            下单时间
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.OrderDetaile">
+            <summary>
+            订单详情
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.OrderDetaile.OrderId">
+            <summary>
+            订单ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.OrderDetaile.SkuId">
+            <summary>
+            SKUID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.OrderDetaile.SkuName">
+            <summary>
+            sku名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.OrderDetaile.ProductId">
+            <summary>
+            商品ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.OrderDetaile.Count">
+            <summary>
+            订单购买数量
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.PostalDeliveryViewModel">
+            <summary>
+            物流信息实体类，来源第三方
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.Product">
+            <summary>
+            商品明细
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.ProductName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.CategoryId">
+            <summary>
+            类目ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.CategoryName">
+            <summary>
+            类目名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.ProductPrice">
+            <summary>
+            商品价格，此价格仅为展示价格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.ProductContent">
+            <summary>
+            商品详情
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.ImgUrl">
+            <summary>
+            商品图片
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.SaleProvince">
+            <summary>
+            限购-省
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.AddDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.ProductType">
+            <summary>
+            商品类型
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.InventedType">
+            <summary>
+            虚拟接口类型
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.Product.IsEnable">
+            <summary>
+            是否启禁用
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.RequestOrderInfo.OrderState">
+            <summary>
+            订单状态 备货中 已取消 未提交 已发货
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.RequestOrderInfo.OrderType">
+            <summary>
+            订单类型 1实物, 2虚拟商品
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.RequestOrderInfo.InventedType">
+            <summary>
+            是否是虚拟商品  1是虚拟商品 如话费,0是实物商品如味极鲜
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.SaleActivity">
+            <summary>
+            商城销售活动
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SaleActivity.SkuId">
+            <summary>
+            具体SKUID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SaleActivity.StartTime">
+            <summary>
+            活动开始时间
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SaleActivity.EndTime">
+            <summary>
+            活动结束时间
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SaleActivity.SalePrice">
+            <summary>
+            售卖价格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SaleActivity.Limit">
+            <summary>
+            限购
+            </summary>
+        </member>
+        <member name="T:IntegralMallAPI.Models.SKU">
+            <summary>
+            SKU信息
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.SkuName">
+            <summary>
+            sku名称
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.ProductId">
+            <summary>
+            商品ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.SkuCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.NormsId">
+            <summary>
+            规格ID
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.Stock">
+            <summary>
+            库存
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.MarketPrice">
+            <summary>
+            市场价格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.Price">
+            <summary>
+            具体销售价格
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.Limit">
+            <summary>
+            限购
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.IsShow">
+            <summary>
+            是否展示
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.AddDate">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:IntegralMallAPI.Models.SKU.IsEnable">
+            <summary>
+            是否启禁用
+            </summary>
+        </member>
+    </members>
+</doc>

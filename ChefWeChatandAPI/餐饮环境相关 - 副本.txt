@@ -1,0 +1,85 @@
+新版餐饮测试服务器地址：10.211.1.249
+
+登陆服务器账号密码为自己工号及电脑密码
+
+API地址：D:\ChefAPI
+后台地址：D:\ChefWeb
+微信地址：D:\ChefWeChat
+
+
+API域名：
+
+http://10.211.1.249:8001/Help  //公共类
+http://10.211.1.249:8002/Help  //用户
+http://10.211.1.249:8003/Help  //EC
+http://10.211.1.249:8004/Help  //商城
+http://10.211.1.249:8005/Help  //积分卡片
+http://10.211.1.249:8006/Help  //营销活动
+
+
+API二级域名：
+
+http://shkapi4uat.shinho.net.cn/ecs/common     //公共类
+http://shkapi4uat.shinho.net.cn/ecs/user       //用户
+http://shkapi4uat.shinho.net.cn/ecs/ec         //EC
+http://shkapi4uat.shinho.net.cn/ecs/mall       //商城
+http://shkapi4uat.shinho.net.cn/ecs/integral   //积分卡片
+http://shkapi4uat.shinho.net.cn/ecs/activity   //营销活动
+
+
+测试数据库url更改为：10.211.96.139 账号密码不变
+
+测试域名：http://uatjifen.shinho.net.cn/   http://uatjifenweixin.shinho.net.cn/
+
+
+
+
+
+
+正式API域名：
+
+http://10.210.1.68:8081/Help  //公共类
+http://10.210.1.68:8082/Help  //用户
+http://10.210.1.68:8083/Help  //EC
+http://10.210.1.68:8084/Help  //商城
+http://10.210.1.68:8085/Help  //积分卡片
+http://10.210.1.68:8086/Help  //营销活动
+
+正式环境API二级域名：
+
+kongapi.shinho.net.cn/ecs/activity //营销活动
+kongapi.shinho.net.cn/ecs/common   //公共类	
+kongapi.shinho.net.cn/ecs/user     //用户
+kongapi.shinho.net.cn/ecs/ec       //EC活动
+kongapi.shinho.net.cn/ecs/integral //积分卡片	
+kongapi.shinho.net.cn/ecs/mall     //积分商城
+
+正式kong地址：
+http://kongadmin.shinho.net.cn/#!/
+登陆密码问问春涛
+
+
+正式数据库：
+10.210.96.230 用户名：credituser 密码：Shinho123
+
+
+正式环境：
+
+10.210.1.68
+10.210.2.242
+administrator/Shinho123
+
+242：
+API地址：D:\ChefAPI
+后台地址：D:\ChefWeb
+微信地址：D:\ChefWeChat
+
+68：
+API地址：D:\CreditAPI
+后台地址：D:\CreditWebSys
+微信地址：D:\CreditWeChat
+
+
+生产环境的两台机器，发布时需要两台机器都部署。
+
+

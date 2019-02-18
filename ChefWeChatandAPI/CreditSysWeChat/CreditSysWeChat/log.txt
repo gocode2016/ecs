@@ -1,0 +1,54 @@
+
+--------------2017/10/13 16:09:35----------------
+post结果：
+
+--------------2017/10/13 16:09:35----------------
+bfd24d90f0dee3c4c39ce48be698f74ee917b88e|
+
+--------------2018/9/14 10:12:28----------------
+post结果：
+
+--------------2018/9/14 10:12:28----------------
+bfd24d90f0dee3c4c39ce48be698f74ee917b88e|
+
+--------------2018/9/14 10:12:44----------------
+post结果：
+
+--------------2018/9/14 10:12:44----------------
+bfd24d90f0dee3c4c39ce48be698f74ee917b88e|
+
+--------------2018/11/9 13:58:04----------------
+获取AccessToken appid:wxa9067ffebe95ca17 secret:b4f6329d708c9b51f89d48f61a45d215
+
+--------------2018/11/9 14:01:36----------------
+获取AccessToken appid:wxa9067ffebe95ca17 secret:b4f6329d708c9b51f89d48f61a45d215
+
+--------------2018/11/14 16:53:01----------------
+SaveWeChatImage-RequestPara:bo79XHicYCAjL6DcpsrPPfWhLjVWoFb31h8ft-dAu_4RUNkqbdJCOjiD1WfQgn_h
+
+--------------2018/11/14 17:07:52----------------
+System.ArgumentException: 参数无效。
+   在 System.Drawing.Image.FromStream(Stream stream, Boolean useEmbeddedColorManagement, Boolean validateImageData)
+   在 System.Drawing.Image.FromStream(Stream stream)
+   在 CreditSysWeChat.Controllers.WeChatController.SaveImage(String url, String path) 位置 e:\CodeProject\ECS\ChefWeChatandAPI\CreditSysWeChat\CreditSysWeChat\Controllers\WeChatController.cs:行号 176
+
+--------------2018/11/14 17:07:52----------------
+111
+
+--------------2018/11/14 17:08:08----------------
+SaveWeChatImage-RequestPara:Mx0TzZahO_NlTTO0hQuqafQT7-702hPoUHc-pmEKVvP4SaaInqXyK6F-l5uY0GrL
+
+--------------2018/11/14 17:22:19----------------
+System.ArgumentException: 参数无效。
+   在 System.Drawing.Image.FromStream(Stream stream, Boolean useEmbeddedColorManagement, Boolean validateImageData)
+   在 System.Drawing.Image.FromStream(Stream stream)
+   在 CreditSysWeChat.Controllers.WeChatController.SaveImage(String url, String path) 位置 e:\CodeProject\ECS\ChefWeChatandAPI\CreditSysWeChat\CreditSysWeChat\Controllers\WeChatController.cs:行号 176
+
+--------------2018/11/14 17:22:19----------------
+111
+
+--------------2018/11/14 17:22:33----------------
+SaveWeChatImage-RequestPara:Ecy0VPYsiRN_zdGI5f-D-LV_r5ua7CWEpktIuDyaU9JlM1eDX0c0ZFxP4C8BnBks
+
+--------------2018/11/14 17:33:16----------------
+SaveWeChatImage-RequestPara:Ecy0VPYsiRN_zdGI5f-D-LV_r5ua7CWEpktIuDyaU9JlM1eDX0c0ZFxP4C8BnBks
